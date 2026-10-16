@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo.png">
+<title>Bioinventics</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Bioinventics – Advanced Biological Invention Centre. In silico drug discovery: network pharmacology, molecular docking, molecular dynamics, DFT and ADMET.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a multi-page research-centre site (separate pages in the top menu, hero with badge + stat counters,
+   checklist about block, feature-card grids, step blocks, founder card, contact channels, rich footer).
+   Palette: deep emerald + gold from the Bioinventics logo, on a soft mint-white page. Single committed light theme. */
+:root{
+  color-scheme:light;
+  --bg:#F7FAF8; --white:#FFFFFF; --soft:#EEF5F1; --soft-2:#E3EEE8;
+  --ink:#0C2A24; --text:#2F4540; --dim:#5E716B; --faint:#8A9A94; --line:#D6E3DD; --line-2:#E6EEEA;
+  --em:#0B6E5B; --em-d:#06433A; --em-x:#032822; --mint:#3DDC97; --mint-soft:#DDF6EA;
+  --gold:#E2A91B; --gold-l:#F7CF5E; --gold-bg:#FFF3D3; --gold-ink:#7E5900;
+  --green:#2E9E6B; --green-bg:#DEF3E8; --teal:#0E7C86; --teal-bg:#DDF1F2; --cyan:#0E7C86;
+  --red:#D6522E; --red-bg:#FCE6DE; --purple:#7048D6; --lav:#ECE6FB; --leaf:#2E9E6B;
+  --sans:"Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r:16px; --shadow:0 1px 2px rgba(12,42,36,.06),0 8px 24px -10px rgba(12,42,36,.18);
+  --shadow-lg:0 2px 6px rgba(12,42,36,.06),0 24px 48px -16px rgba(12,42,36,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+main,footer{overflow-x:clip}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+::selection{background:var(--gold-l);color:var(--ink)}
+h1,h2,h3,h4{margin:0;text-wrap:balance;color:var(--ink);letter-spacing:-.02em;line-height:1.15}
+p{margin:0}
+.wrap{max-width:1220px;margin:0 auto;padding-left:max(22px, env(safe-area-inset-left, 0px));padding-right:max(22px, env(safe-area-inset-right, 0px))}
+.sec{padding-block:clamp(64px,8vw,96px)}
+section[id]{scroll-margin-top:90px}
+.sec.alt{background:var(--white);border-block:1px solid var(--line-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--em);background:var(--mint-soft);padding:6px 12px;border-radius:999px}
+.h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;margin-top:14px}
+.hl{font-style:italic;background:linear-gradient(90deg,var(--em),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.lead{color:var(--dim);font-size:17.5px;max-width:64ch;margin-top:14px}
+.center{text-align:center}
+.center .lead{margin-inline:auto}
+.head{margin-bottom:44px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);font-weight:700;font-size:15px;padding:0 22px;height:50px;border-radius:999px;border:1.5px solid var(--em);background:transparent;color:var(--em);text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .15s,background .15s,color .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);background:var(--mint-soft)}
+.btn.gold{background:linear-gradient(135deg,var(--gold-l),var(--gold));border-color:transparent;color:#2A1E00;box-shadow:0 10px 24px -10px rgba(226,169,27,.8)}
+.btn.gold:hover{background:linear-gradient(135deg,#FAD877,#E9B12C)}
+.btn.em,.btn.dark{background:var(--em);border-color:var(--em);color:#fff}
+.btn.em:hover,.btn.dark:hover{background:var(--em-d)}
+.btn.light{border-color:rgba(255,255,255,.55);color:#fff}
+.btn.light:hover{background:rgba(255,255,255,.1)}
+.btn.sm{height:40px;font-size:14px;padding:0 16px}
+.btn svg{width:17px;height:17px}
+.badge{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--gold-bg);color:var(--gold-ink);white-space:nowrap}
+.badge.p{background:var(--lav);color:var(--purple)}
+.badge.g{background:var(--green-bg);color:var(--green)}
+.badge.r{background:var(--red-bg);color:var(--red)}
+.badge.t{background:var(--teal-bg);color:var(--teal)}
+.link{color:var(--em);font-weight:700;background:none;border:0;font:inherit;font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:4px;padding:0}
+
+/* ===== header ===== */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2)}
+.hdr .row{display:flex;align-items:center;gap:20px;height:76px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;min-width:0}
+.brand img{width:46px;height:46px;border-radius:10px;border:1px solid var(--line);flex:none;background:#fff}
+.brand b{display:block;font-weight:800;font-size:21px;color:var(--ink);letter-spacing:-.02em;line-height:1.05}
+.brand small{display:block;font-size:11.5px;color:var(--dim);font-weight:600;white-space:nowrap}
+.hnav{display:flex;gap:2px}
+.hnav a{font-size:14.5px;font-weight:600;color:var(--text);text-decoration:none;padding:9px 12px;border-radius:999px;white-space:nowrap;transition:background .15s,color .15s}
+.hnav a:hover{background:var(--soft);color:var(--em)}
+.hnav a.on{background:var(--mint-soft);color:var(--em)}
+.burger{display:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;align-items:center;justify-content:center;flex:none}
+.burger svg{width:22px;height:22px}
+.drawer{position:fixed;inset:0;z-index:70;background:rgba(3,40,34,.55)}
+.drawer[hidden]{display:none!important}
+.drawer .panel{position:absolute;right:0;top:0;bottom:0;width:min(330px,88vw);background:var(--white);padding:calc(env(safe-area-inset-top,0px) + 22px) max(22px,env(safe-area-inset-right,0px)) 22px 22px;overflow:auto}
+.drawer .panel a{display:block;padding:13px 6px;font-weight:700;font-size:17px;text-decoration:none;border-bottom:1px solid var(--line-2)}
+.drawer .panel a.on{color:var(--em)}
+.drawer .panel .btn{margin-top:18px;width:100%;color:#2A1E00;border-bottom:0}
+
+/* ===== hero ===== */
+.hero{position:relative;overflow:hidden;isolation:isolate;color:#fff;background:
+  radial-gradient(700px 420px at 85% 30%, rgba(61,220,151,.22), transparent 65%),
+  radial-gradient(600px 400px at 0% 100%, rgba(226,169,27,.20), transparent 65%),
+  linear-gradient(135deg,var(--em-x) 0%,var(--em-d) 45%,var(--em) 100%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.4px);background-size:26px 26px;mask-image:linear-gradient(180deg,#000,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:72px 64px}
+.hero-grid > *{min-width:0}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:13.5px;font-weight:600}
+.pill i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#2A1E00}
+.pill i svg{width:15px;height:15px}
+.hero h1{color:#fff;font-size:clamp(40px,5.6vw,70px);font-weight:800;line-height:1.04;letter-spacing:-.035em;margin-top:22px}
+.hero h1 .g{font-style:italic;background:linear-gradient(90deg,var(--gold-l),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+.hero p.sub{font-size:18.5px;color:rgba(255,255,255,.82);margin:22px 0 32px;max-width:56ch}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+.counters div{padding:16px 14px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);min-width:0}
+.counters b{display:block;font-size:clamp(24px,2.6vw,32px);font-weight:800;color:var(--gold-l);letter-spacing:-.02em;line-height:1.1}
+.counters span{font-size:12.5px;color:rgba(255,255,255,.75);font-weight:600}
+.glass{position:relative;aspect-ratio:1/1;border-radius:28px;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.2);box-shadow:0 40px 80px -30px rgba(0,0,0,.6);overflow:hidden;max-width:520px;justify-self:end;width:100%}
+.glass::after{content:"";position:absolute;inset:14%;border-radius:50%;border:1px dashed rgba(247,207,94,.35);animation:spin 50s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+#heroMol{position:absolute;inset:0;width:100%;height:100%;cursor:grab;z-index:1}
+.est{position:absolute;top:18px;left:18px;z-index:2;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--gold);color:#2A1E00}
+.gchip{position:absolute;z-index:2;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:var(--shadow);font-size:12px;line-height:1.3;pointer-events:none}
+.gchip span{color:var(--dim);font-weight:600}
+.gchip b{display:block;font-size:15px;font-weight:800}
+.gchip.c1{right:18px;top:22%}
+.gchip.c2{left:18px;bottom:18%}
+.gchip.c3{right:18px;bottom:8%}
+.ghint{position:absolute;top:22px;right:20px;z-index:2;font-size:11.5px;color:rgba(255,255,255,.7)}
+.wave{display:block;width:100%;height:56px;margin-top:-1px}
+
+/* page heroes (inner pages) */
+.phero{position:relative;overflow:hidden;color:#fff;padding-block:64px 70px;background:radial-gradient(500px 300px at 90% 0%,rgba(61,220,151,.22),transparent 70%),linear-gradient(135deg,var(--em-x),var(--em-d) 50%,var(--em))}
+.phero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.1) 1px,transparent 1.4px);background-size:24px 24px;mask-image:linear-gradient(90deg,transparent,#000);-webkit-mask-image:linear-gradient(90deg,transparent,#000)}
+.phero .wrap{position:relative}
+.crumbs{font-size:13.5px;color:rgba(255,255,255,.7);font-weight:600}
+.crumbs a{color:var(--gold-l);text-decoration:none}
+.phero h1{color:#fff;font-size:clamp(36px,5vw,58px);font-weight:800;letter-spacing:-.03em;margin-top:12px}
+.phero h1 em{color:var(--gold-l)}
+.phero p{color:rgba(255,255,255,.82);font-size:17.5px;max-width:64ch;margin-top:12px}
+
+/* ===== about block (home) ===== */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.two > *{min-width:0}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.checks li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:18px;border-radius:var(--r);background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow)}
+.checks .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--mint-soft);color:var(--em)}
+.checks .ic svg{width:22px;height:22px}
+.checks b{display:block;color:var(--ink);font-size:16.5px}
+.checks p{font-size:14.5px;color:var(--dim)}
+
+/* ===== tabs + research cards ===== */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.tab{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--text);cursor:pointer}
+.tab:hover{border-color:var(--em)}
+.tab[aria-selected="true"]{background:var(--em);border-color:var(--em);color:#fff}
+.tabintro{display:none}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ccard{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--white);border:1px solid var(--line-2);border-radius:20px;padding:12px 12px 20px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.ccard:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.ccard:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.ccard > *:not(.thumb){margin-inline:8px}
+.thumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;margin-bottom:8px}
+.thumb canvas{width:100%;height:100%;display:block}
+.thumb .pub{position:absolute;left:10px;top:10px;background:rgba(255,255,255,.95);font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;color:var(--ink)}
+.ccard h3{font-size:16.5px;font-weight:800;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;order:1}
+.ccard .meta{display:flex;gap:6px;flex-wrap:wrap;order:0}
+.ccard .who{font-size:12.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;order:2}
+.ccard .jr{font-size:13.5px;color:var(--em);font-weight:700;order:3}
+.ccard .key{font-family:var(--mono);font-size:12px;color:var(--ink);order:4;padding-top:10px;border-top:1px dashed var(--line);margin-top:4px}
+
+/* ===== feature cards (why / services) ===== */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.fcard{padding:28px;border-radius:20px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;min-width:0}
+.fcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.fcard .ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--c-bg,var(--mint-soft));color:var(--c,var(--em));margin-bottom:18px}
+.fcard .ic svg{width:28px;height:28px}
+.fcard h3{font-size:19px;font-weight:800}
+.fcard p{color:var(--dim);font-size:15px;margin-top:8px}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{padding:26px;border-radius:20px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;min-width:0;position:relative;overflow:hidden}
+.cat:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cat::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--c)}
+.cat .art{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--c-bg);margin-bottom:16px}
+.cat .art svg{width:28px;height:28px;color:var(--c)}
+.cat h3{font-size:18px;font-weight:800}
+.cat p{font-size:14.5px;color:var(--dim);margin-top:8px}
+.cat .tl{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:14px}
+
+/* ===== workflow (curriculum-like) ===== */
+.flow{display:grid;grid-template-columns:340px 1fr;gap:24px}
+.flow > *{min-width:0}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:14px 16px;border-radius:16px;background:var(--white);border:1px solid var(--line-2);transition:border-color .15s,box-shadow .15s}
+.step:hover{border-color:var(--em)}
+.step .n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;background:var(--soft);color:var(--em)}
+.step b{display:block;font-size:15.5px;color:var(--ink)}
+.step small{display:block;font-size:12.5px;color:var(--dim)}
+.step[aria-selected="true"]{border-color:var(--em);box-shadow:0 0 0 3px var(--mint-soft)}
+.step[aria-selected="true"] .n{background:var(--em);color:#fff}
+.step:focus-visible{outline:2px solid var(--gold)}
+.flow-panel{position:relative;overflow:hidden;border-radius:22px;padding:clamp(24px,3.4vw,40px);background:linear-gradient(150deg,var(--em-d),var(--em));color:#fff;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-lg)}
+.flow-panel > *:not(.bgnum){position:relative}
+.flow-panel .k{font-size:12.5px;font-weight:800;letter-spacing:.1em;color:var(--gold-l)}
+.flow-panel h3{color:#fff;font-size:clamp(26px,3vw,36px);font-weight:800}
+.flow-panel p{color:rgba(255,255,255,.85);font-size:16.5px;max-width:62ch}
+.flow-panel .tools{display:flex;flex-wrap:wrap;gap:8px}
+.flow-panel .tools span{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
+.flow-panel .bar{height:6px;border-radius:6px;background:rgba(255,255,255,.15);overflow:hidden}
+.flow-panel .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-l),var(--mint));transition:width .5s}
+.flow-panel .ex{margin-top:auto;display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:16px 18px;border-radius:16px;background:var(--white);color:var(--text)}
+.flow-panel .ex .v{font-size:28px;font-weight:800;color:var(--em);font-variant-numeric:tabular-nums}
+.flow-panel .ex .d{flex:1;min-width:200px;font-size:14px}
+.flow-panel .ex a{font-size:13.5px;font-weight:700;color:var(--em);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.flow-panel .bgnum{position:absolute;right:20px;top:-30px;font-size:220px;font-weight:800;color:rgba(255,255,255,.06);line-height:1;pointer-events:none}
+
+/* ===== molecule lab ===== */
+.lab{display:grid;grid-template-columns:1.1fr .9fr;border-radius:24px;overflow:hidden;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow-lg)}
+.lab > *{min-width:0}
+.viewer{position:relative;min-height:500px;background:radial-gradient(circle at 50% 48%,#FFFFFF 0%,#EAF6F0 60%,#DCEFE6 100%)}
+#labMol{position:absolute;inset:0;width:100%;height:100%;cursor:grab}
+.viewer .vt{position:absolute;left:16px;top:16px;display:flex;gap:6px;flex-wrap:wrap;z-index:1}
+.mtab{font-family:var(--sans);font-weight:700;font-size:13.5px;padding:8px 15px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);color:var(--text);cursor:pointer}
+.mtab[aria-selected="true"]{background:var(--em);color:#fff;border-color:var(--em)}
+.viewer .hint{position:absolute;left:16px;bottom:14px;font-size:12px;color:var(--dim);font-weight:600}
+.viewer .legend{position:absolute;right:16px;bottom:14px;display:flex;gap:10px;font-size:12px;font-weight:700;color:var(--dim)}
+.viewer .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.info{padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px}
+.info .k{font-size:12.5px;font-weight:800;letter-spacing:.08em;color:var(--em);text-transform:uppercase}
+.info h3{font-size:clamp(28px,3vw,40px);font-weight:800}
+.info h3 em{color:var(--gold)}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.metrics div{border-radius:14px;padding:14px 16px;background:var(--soft);min-width:0}
+.metrics b{display:block;font-size:23px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.metrics span{font-size:12.5px;color:var(--dim);font-weight:600}
+.info .src{font-size:14px;color:var(--dim)}
+.info .src a{color:var(--em);font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* ===== research areas ===== */
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.area{border-radius:20px;overflow:hidden;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0}
+.area canvas{width:100%;height:150px;display:block;background:var(--c-bg)}
+.area .bd{padding:22px;display:flex;flex-direction:column;flex:1}
+.area h3{font-size:23px;font-weight:800}
+.area p{color:var(--dim);font-size:14.5px;margin-top:6px}
+.area ul{list-style:none;padding:0;margin:0;margin-top:auto;padding-top:16px}
+.area li{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--line-2);font-size:14px}
+.area li span:last-child{font-weight:700;color:var(--c);white-space:nowrap}
+
+/* ===== mission / numbers / founder ===== */
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.mvc{padding:32px;border-radius:22px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);position:relative;overflow:hidden;min-width:0}
+.mvc::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:var(--c-bg)}
+.mvc > *{position:relative;z-index:1}
+.mvc .ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:#fff;margin-bottom:16px}
+.mvc .ic svg{width:28px;height:28px}
+.mvc h3{font-size:24px;font-weight:800}
+.mvc p{color:var(--dim);margin-top:8px}
+.why2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.why2 > div{padding:26px;border-radius:20px;background:var(--soft);min-width:0}
+.why2 b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--em)}
+.why2 p{margin-top:8px}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.nums div{padding:26px;border-radius:20px;text-align:center;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);min-width:0}
+.nums b{display:block;font-size:clamp(32px,3.6vw,44px);font-weight:800;color:var(--em);letter-spacing:-.03em}
+.nums span{font-weight:600;color:var(--dim);font-size:14.5px}
+.logo-story{display:flex;gap:22px;align-items:center;padding:24px;border-radius:20px;background:var(--gold-bg);margin-top:22px}
+.logo-story img{width:110px;height:110px;border-radius:14px;background:#fff;flex:none}
+.founder{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;padding:36px;border-radius:24px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow-lg)}
+.founder > *{min-width:0}
+.av{position:relative;width:180px;height:180px;border-radius:50%;flex:none;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,var(--em),var(--mint) 55%,var(--gold-l));box-shadow:0 0 0 6px var(--white),0 0 0 8px var(--gold)}
+.av span{font-size:60px;font-weight:800;color:#fff;letter-spacing:-.03em}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.av.big{width:min(320px,100%);height:auto;aspect-ratio:1}
+.av.big span{font-size:104px}
+.founder .k{font-size:12.5px;font-weight:800;letter-spacing:.1em;color:var(--em);text-transform:uppercase}
+.founder h3{font-size:clamp(26px,3vw,36px);font-weight:800;margin-top:6px}
+.founder .role{font-weight:700;color:var(--gold-ink);margin:4px 0 12px}
+.founder p{max-width:70ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tags span{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;background:var(--mint-soft);color:var(--em)}
+.partners{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.partners div{padding:18px;border-radius:16px;background:var(--white);border:1px solid var(--line-2);min-width:0}
+.partners b{display:block;font-size:14.5px;color:var(--ink);line-height:1.35}
+.partners span{font-size:12.5px;color:var(--faint)}
+
+/* ===== team ===== */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.member{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:30px 24px;border-radius:22px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);min-width:0}
+.member .ph{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:28px;color:#fff;background:var(--c);overflow:hidden;position:relative;box-shadow:0 0 0 5px var(--white),0 0 0 7px var(--c)}
+.member .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.member .ph svg{width:40px;height:40px}
+.member h3{font-size:18.5px;font-weight:800;margin-top:8px}
+.member .r{font-size:13px;font-weight:800;color:var(--c);letter-spacing:.02em}
+.member p{font-size:14.5px;color:var(--dim)}
+.member.open{border-style:dashed;background:var(--soft);box-shadow:none}
+.member.open h3{color:var(--dim)}
+.member.join{background:linear-gradient(150deg,var(--em-d),var(--em));color:#fff;justify-content:center}
+.member.join h3{color:#fff;font-size:22px}
+.member.join p{color:rgba(255,255,255,.85)}
+.member.join .btn{background:var(--gold);border-color:var(--gold);color:#2A1E00}
+
+/* ===== CTA ===== */
+.ctab{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:clamp(28px,4vw,52px);border-radius:28px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(500px 300px at 100% 100%,rgba(247,207,94,.35),transparent 70%),linear-gradient(135deg,var(--em-x),var(--em))}
+.ctab > *{min-width:0}
+.ctab h2{color:#fff;font-size:clamp(28px,3.4vw,42px);font-weight:800}
+.ctab p{color:rgba(255,255,255,.85);font-size:17px;margin:14px 0 24px;max-width:52ch}
+.cta-art{position:relative;aspect-ratio:1/1;max-width:320px;justify-self:center;width:100%}
+.cta-art canvas{position:absolute;inset:0;width:100%;height:100%}
+.cta-art::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95),rgba(255,255,255,.75) 60%,rgba(255,255,255,0) 72%)}
+
+/* ===== contact ===== */
+.chan{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+.chan > div,.chan > a{padding:22px;border-radius:18px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);text-decoration:none;min-width:0;display:flex;flex-direction:column;gap:6px}
+.chan .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--mint-soft);color:var(--em);margin-bottom:6px}
+.chan .ic svg{width:22px;height:22px}
+.chan b{color:var(--ink)}
+.chan span{font-size:14px;color:var(--dim);word-break:break-word;user-select:all}
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start}
+.contact > *{min-width:0}
+.cinfo{display:grid;gap:10px;margin-top:20px}
+.cinfo > div{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:14px;background:var(--white);border:1px solid var(--line-2);flex-wrap:wrap}
+.cinfo .lb{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);width:84px}
+.cinfo .v{font-weight:700;flex:1;min-width:170px;word-break:break-word;user-select:all;color:var(--ink)}
+form.inq{padding:clamp(22px,3vw,34px);border-radius:24px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow-lg);display:grid;gap:14px}
+form.inq h3{font-size:24px;font-weight:800}
+form.inq .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form.inq label{display:grid;gap:6px;font-size:14px;font-weight:700;color:var(--ink);min-width:0}
+form.inq input,form.inq textarea{font:inherit;font-size:15px;font-weight:500;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+form.inq textarea{min-height:120px;resize:vertical}
+form.inq input:focus,form.inq textarea:focus{outline:none;border-color:var(--em);box-shadow:0 0 0 4px var(--mint-soft)}
+.svcpick{display:flex;flex-wrap:wrap;gap:8px}
+.svcpick label{display:inline-flex!important;cursor:pointer}
+.svcpick input{position:absolute;opacity:0;width:1px;height:1px}
+.svcpick span{font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--white)}
+.svcpick input:checked + span{background:var(--em);border-color:var(--em);color:#fff}
+.svcpick input:focus-visible + span{outline:2px solid var(--gold);outline-offset:2px}
+.formnote{font-size:13px;color:var(--dim)}
+.out{display:none;padding:14px;border-radius:12px;background:var(--mint-soft);font-size:14px}
+.out.show{display:block}
+
+/* ===== publications page ===== */
+.results{display:grid;grid-template-columns:260px 1fr;gap:32px;padding-block:44px 72px}
+.results > *{min-width:0}
+.side{position:sticky;top:100px;align-self:start;padding:22px;border-radius:20px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow)}
+.side h4{font-size:15px;font-weight:800;padding:12px 0 6px;border-top:1px solid var(--line-2)}
+.side > div:first-child h4{border-top:0;padding-top:0}
+.side label{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14.5px;cursor:pointer}
+.side input{width:18px;height:18px;accent-color:var(--em)}
+.side .ct{margin-left:auto;font-size:12px;font-weight:700;color:var(--em);background:var(--mint-soft);padding:1px 8px;border-radius:999px}
+.rtop{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.rtop b{font-size:17px;color:var(--ink)}
+.rsearch{display:flex;align-items:center;gap:8px;height:48px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);flex:0 1 340px;min-width:0}
+.rsearch:focus-within{border-color:var(--em);box-shadow:0 0 0 4px var(--mint-soft)}
+.rsearch svg{width:17px;height:17px;color:var(--dim);flex:none}
+.rsearch input{all:unset;flex:1;min-width:0;font-size:14.5px}
+.rlist{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.rrow{display:grid;grid-template-columns:240px 1fr auto;gap:22px;padding:14px;border-radius:20px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.rrow:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.rrow:focus-visible{outline:2px solid var(--gold)}
+.rrow > *{min-width:0}
+.rrow .thumb{margin:0;height:100%;aspect-ratio:auto;min-height:150px}
+.rrow > div:nth-child(2){padding-block:6px}
+.rrow h2{font-size:18px;font-weight:800;line-height:1.35}
+.rrow:hover h2{color:var(--em)}
+.rrow .snip{font-size:14.5px;color:var(--dim);margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rrow .who{font-size:12.5px;color:var(--faint);margin-top:8px}
+.rrow .jr{font-size:14px;font-weight:700;color:var(--em);margin-top:4px}
+.rrow .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.rrow .yr{font-size:15px;font-weight:800;color:#2A1E00;background:var(--gold-l);padding:4px 12px;border-radius:999px;align-self:start;margin:6px 6px 0 0}
+.empty{padding:48px 0;text-align:center;color:var(--dim)}
+
+/* ===== reader window ===== */
+.reader{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.reader[hidden]{display:none!important}
+.reader .scrim{position:absolute;inset:0;background:rgba(3,40,34,.6);backdrop-filter:blur(4px);animation:fade .2s}
+@keyframes fade{from{opacity:0}}
+.win{position:relative;width:min(900px,100%);max-height:100%;display:flex;flex-direction:column;border-radius:22px;background:var(--white);box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;animation:pop .25s cubic-bezier(.2,.9,.3,1.1)}
+@keyframes pop{from{transform:translateY(14px) scale(.98);opacity:0}}
+.win .chrome{display:flex;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(135deg,var(--em-d),var(--em));color:#fff}
+.dots{display:flex;gap:7px}
+.dots i{width:11px;height:11px;border-radius:50%}
+.dots i:nth-child(1){background:#FF6B6B}.dots i:nth-child(2){background:var(--gold-l)}.dots i:nth-child(3){background:var(--mint)}
+.win .addr{flex:1;min-width:0;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.8);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win .x{all:unset;cursor:pointer;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff}
+.win .x:hover{background:rgba(255,255,255,.15)}
+.win .x:focus-visible{outline:2px solid var(--gold)}
+.win .body{overflow:auto;padding:clamp(22px,4vw,44px);overscroll-behavior:contain}
+.win .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.win .meta .yr{font-size:13px;color:var(--dim);font-weight:700}
+.win h2{font-size:clamp(23px,2.8vw,32px);font-weight:800;line-height:1.22}
+.win .j{font-weight:700;color:var(--em);margin-top:10px;font-size:15.5px}
+.win .au{font-size:14px;color:var(--dim);margin-top:6px}
+.win .ab-l{font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin:26px 0 10px;display:flex;align-items:center;gap:12px}
+.win .ab-l::after{content:"";flex:1;height:1px;background:var(--line)}
+.win .ab{font-size:17px;line-height:1.8;color:var(--text);max-width:72ch}
+.win .ab strong{display:block;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--em);margin-top:14px}
+.win .ab strong:first-child{margin-top:0}
+.win .foot{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 16px;border-top:1px solid var(--line-2);background:var(--bg)}
+.win .foot .sp{flex:1}
+.win .foot .btn.pri{background:var(--em);border-color:var(--em);color:#fff}
+
+/* ===== founder page ===== */
+.ceo-hero{color:#fff;padding-block:64px;background:radial-gradient(600px 400px at 85% 40%,rgba(247,207,94,.22),transparent 65%),linear-gradient(135deg,var(--em-x),var(--em-d) 50%,var(--em))}
+.ceo-grid{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center}
+.ceo-grid > *{min-width:0}
+.ceo-photo{position:relative;justify-self:center;width:100%;max-width:320px}
+.ceo-badge{position:absolute;right:0;bottom:14px;padding:10px 16px;border-radius:14px;background:var(--gold);color:#2A1E00;box-shadow:var(--shadow)}
+.ceo-badge b{display:block;font-size:15px;font-weight:800}
+.ceo-badge span{font-size:12px;font-weight:600}
+.ceo-hero .eyebrow{background:rgba(255,255,255,.12);color:var(--gold-l)}
+.ceo-hero h1{color:#fff;font-size:clamp(38px,5vw,62px);font-weight:800;margin-top:14px;letter-spacing:-.035em}
+.ceo-hero h1 .serif{font-style:italic;color:var(--gold-l)}
+.ceo-sub{font-weight:700;color:var(--mint);margin-top:10px}
+.ceo-hero .lead{color:rgba(255,255,255,.85)}
+.ceo-facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.ceo-facts div{padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.ceo-facts b{display:block;font-size:22px;font-weight:800;color:var(--gold-l)}
+.ceo-facts span{font-size:12.5px;color:rgba(255,255,255,.75);font-weight:600}
+.ceo-hero .cta{display:flex;gap:10px;flex-wrap:wrap}
+.ceo-hero .btn{border-color:rgba(255,255,255,.55);color:#fff}
+.ceo-hero .btn:hover{background:rgba(255,255,255,.1)}
+.ceo-hero .btn.gold{color:#2A1E00;border-color:transparent}
+.ceo-body{display:grid;gap:22px;padding-block:48px 72px}
+.cv-two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cv-two > *{min-width:0}
+.cv-block{padding:clamp(22px,3vw,32px);border-radius:22px;background:var(--white);border:1px solid var(--line-2);box-shadow:var(--shadow);min-width:0}
+.cv-h{font-size:21px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.cv-h::before{content:"";width:10px;height:22px;border-radius:4px;background:linear-gradient(var(--gold),var(--em))}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:14px;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--mint-soft);color:var(--em)}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:84px 1fr;gap:14px;padding:14px 0;border-top:1px dashed var(--line)}
+.tl li:first-child{border-top:0;padding-top:0}
+.tl .when{font-size:13px;font-weight:800;color:#2A1E00;background:var(--gold-bg);border-radius:999px;padding:3px 10px;align-self:start;text-align:center}
+.tl b{display:block;font-size:16px;color:var(--ink)}
+.tl p{font-size:14.5px}
+.tl em{display:block;font-style:normal;font-size:13px;color:var(--dim);margin-top:2px}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.skills article{padding:20px;border-radius:16px;background:var(--soft);border-top:4px solid var(--c);min-width:0}
+.skills h3{font-size:16px;font-weight:800;margin-bottom:8px}
+.skills p{font-size:14px;line-height:1.7}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:12px 0;border-top:1px dashed var(--line);display:grid;gap:2px}
+.list li:first-child{border-top:0;padding-top:0}
+.list b{font-size:15.5px;color:var(--ink)}
+.list span{font-size:13.5px;color:var(--dim)}
+.ceo-contact{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;align-items:center}
+.ceo-contact .cinfo{margin:0}
+
+/* ===== footer ===== */
+footer{background:var(--em-x);color:#fff}
+.fnews{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-block:36px;border-bottom:1px solid rgba(255,255,255,.12)}
+.fnews h3{color:#fff;font-size:24px;font-weight:800}
+.fnews p{color:rgba(255,255,255,.75)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:36px;padding-block:44px 30px}
+.fgrid > *{min-width:0}
+.fgrid h4{color:var(--gold-l);font-size:15px;font-weight:800;margin-bottom:14px}
+.fgrid ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.fgrid a{color:rgba(255,255,255,.82);text-decoration:none;font-size:14.5px}
+.fgrid a:hover{color:var(--gold-l)}
+.fbrand{display:flex;gap:14px;align-items:flex-start}
+.fbrand img{width:64px;height:64px;border-radius:12px;background:#fff;flex:none}
+.fbrand b{font-size:22px;font-weight:800;display:block}
+.fbrand p{color:rgba(255,255,255,.72);font-size:14px;margin-top:6px;max-width:34ch}
+.fbase{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:rgba(255,255,255,.65)}
+.fbase i{color:var(--gold-l);font-style:italic;font-weight:700}
+.checker{height:8px;background:repeating-linear-gradient(90deg,#BF9000 0 40px,#000 40px 80px)}
+
+/* ===== responsive ===== */
+@media (max-width:1180px){ .hnav,.hdr .row > .btn{display:none} .burger{display:inline-flex} }
+@media (max-width:1020px){
+  .hero-grid,.two,.flow,.lab,.contact,.ctab,.ceo-grid{grid-template-columns:1fr}
+  .glass{justify-self:center;max-width:460px}
+  .cards,.feat,.areas,.team{grid-template-columns:1fr 1fr}
+  .cat-grid,.chan{grid-template-columns:1fr 1fr}
+  .nums{grid-template-columns:1fr 1fr}
+  .partners{grid-template-columns:repeat(2,1fr)}
+  .steps{flex-direction:row;overflow-x:auto;padding-bottom:6px}
+  .step{min-width:200px}
+  .viewer{min-height:400px}
+  .results{grid-template-columns:1fr}
+  .side{position:static;display:grid;grid-template-columns:repeat(3,1fr);gap:0 20px}
+  .side h4{border-top:0;padding-top:0}
+  .rrow{grid-template-columns:200px 1fr}
+  .rrow .yr{display:none}
+  .skills{grid-template-columns:1fr 1fr}
+  .ceo-photo{max-width:260px}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .brand small{display:none}
+  .counters{grid-template-columns:1fr 1fr}
+  .cards,.feat,.areas,.team,.cat-grid,.chan,.mv,.why2,.cv-two,.skills,.ceo-contact,.fgrid,.side{grid-template-columns:1fr}
+  .founder{grid-template-columns:1fr;padding:24px}
+  .av{width:130px;height:130px}.av span{font-size:44px}
+  .rrow{grid-template-columns:1fr}
+  .rrow .thumb{min-height:0;aspect-ratio:16/9}
+  form.inq .row{grid-template-columns:1fr}
+  .logo-story{flex-direction:column;align-items:flex-start}
+  .gchip{font-size:11px;padding:7px 10px}.gchip b{font-size:13px}
+  .tl li{grid-template-columns:72px 1fr}
+}
+</style>
+</head>
+<body>
+
+
+<!-- ============ HEADER ============ -->
+<header class="hdr">
+  <div class="wrap row">
+    <a class="brand" href="#home" aria-label="Bioinventics home"><img src="logo.png" alt=""><span style="min-width:0"><b>Bioinventics</b><small>In Silico Research &amp; Drug Discovery</small></span></a>
+    <nav class="hnav" aria-label="Main">
+      <a href="#home" data-p="home">Home</a><a href="#about" data-p="about">About</a><a href="#services" data-p="services">Services</a><a href="#research" data-p="research">Research</a><a href="#publications" data-p="publications">Publications</a><a href="#team" data-p="team">Team</a><a href="#founder" data-p="founder">Founder</a><a href="#contact" data-p="contact">Contact</a>
+    </nav>
+    <a class="btn gold sm" href="#contact">Start a Project</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<div class="drawer" id="drawer" hidden><div class="panel">
+  <a href="#home" data-p="home">Home</a><a href="#about" data-p="about">About</a><a href="#services" data-p="services">Services</a><a href="#research" data-p="research">Research</a><a href="#publications" data-p="publications">Publications</a><a href="#team" data-p="team">Team</a><a href="#founder" data-p="founder">Founder &amp; CEO</a><a href="#contact" data-p="contact">Contact</a>
+  <a class="btn gold" href="#contact">Start a Project</a>
+</div></div>
+
+<main>
+<!-- ================= HOME ================= -->
+<div id="view-home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 3c0 6 10 6 10 12s-10 3-10 6M17 3c0 6-10 6-10 12s10 3 10 6M8 7h8M8 17h8"/></svg></i>Advanced Biological Invention Centre</span>
+        <h1>Computer is your lab. Now <span class="g">execute experiments.</span></h1>
+        <p class="sub">Bioinventics discovers drug candidates on the computer first. We connect diseases to targets, screen millions of molecules and test the best hits with molecular dynamics and quantum chemistry, so lab work starts with the strongest leads.</p>
+        <div class="ctas">
+          <a class="btn gold" href="#research">Explore Our Research <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn light" href="#publications">View Publications</a>
+        </div>
+        <div class="counters">
+          <div><b>6</b><span>Publications</span></div>
+          <div><b>21.7M</b><span>Compounds screened</span></div>
+          <div><b>10</b><span>Partner institutions</span></div>
+          <div><b>5</b><span>Countries</span></div>
+        </div>
+      </div>
+      <div class="glass" aria-label="Rotating 3D model of arbutin from our melanoma study">
+        <span class="est">Rajshahi · Bangladesh</span>
+        <span class="ghint">Drag to rotate</span>
+        <canvas id="heroMol"></canvas>
+        <div class="gchip c1"><span>Target</span><b>AKT1 · melanoma</b></div>
+        <div class="gchip c2"><span>Docking score</span><b>−7.9 kcal/mol</b></div>
+        <div class="gchip c3"><span>HOMO–LUMO gap</span><b>5.72 eV</b></div>
+      </div>
+    </div>
+    <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 56V28C240 0 480 0 720 22s480 30 720 0v34z" fill="#F7FAF8"/></svg>
+  </section>
+
+  <section class="sec" style="padding-top:48px">
+    <div class="wrap two">
+      <div>
+        <span class="eyebrow">About Bioinventics</span>
+        <h2 class="h2">Where Nature Meets <span class="hl">Computational Power</span></h2>
+        <p class="lead">Bioinventics is a research organisation for in silico drug design and discovery. We use computational chemistry and bioinformatics to design drugs from bioactive natural sources against cancer, viruses and drug-resistant bacteria.</p>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn em" href="#about">Learn More About Us</a><a class="btn" href="#services">Our Services</a></div>
+      </div>
+      <ul class="checks">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7 7l4 3M17 7l-4 3M12 12v4"/></svg></span><div><b>Complete in silico pipeline</b><p>Network pharmacology, screening, docking, 100 ns MD, MM-GBSA, DFT and ADMET, all in-house.</p></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l8-8"/></svg></span><div><b>Natural-product focus</b><p>Phytochemicals, plant extracts and food-derived peptides as starting points for new drugs.</p></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span><div><b>Peer-reviewed results</b><p>Six papers with Springer Nature, Wiley, Taylor &amp; Francis and Frontiers since 2023.</p></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><div><b>International network</b><p>Partners at universities and hospitals across five countries.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec alt" id="featured">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Featured Research</span><h2 class="h2">Our Latest <span class="hl">Publications</span></h2><p class="lead">Open any card to read the full abstract in a separate window.</p></div>
+      <div class="tabs" role="tablist" id="pubTabs"></div>
+      <div class="tabintro" id="tabIntro"></div>
+      <div class="cards" id="cards"></div>
+      <div style="text-align:center;margin-top:34px"><a class="btn em" href="#publications">View All Publications</a></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Why Bioinventics</span><h2 class="h2">Why Choose <span class="hl">Bioinventics?</span></h2></div>
+      <div class="feat">
+        <article class="fcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 12l3-3 2 2 4-4"/></svg></div><h3>End-to-end pipeline</h3><p>From target discovery to DFT and ADMET, every step is run and checked by the same team.</p></article>
+        <article class="fcard" style="--c:var(--gold-ink);--c-bg:var(--gold-bg)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div><h3>Benchmarked results</h3><p>Every candidate is compared with a known reference drug, such as gilteritinib for FLT3.</p></article>
+        <article class="fcard" style="--c:var(--purple);--c-bg:var(--lav)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/></svg></div><h3>Quantum-level detail</h3><p>DFT calculations of frontier orbitals and reactivity go beyond docking scores alone.</p></article>
+        <article class="fcard" style="--c:var(--red);--c-bg:var(--red-bg)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></div><h3>Publication-ready output</h3><p>Figures, tables and methods text prepared for the journals you are targeting.</p></article>
+        <article class="fcard" style="--c:var(--teal);--c-bg:var(--teal-bg)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.8-3.5 3.2-5.5 6-5.5s5.2 2 6 5.5M15 14.6c2.6-.4 5 1.3 6 4.4"/></svg></div><h3>Collaboration first</h3><p>We work alongside wet-lab groups so computational leads get tested at the bench.</p></article>
+        <article class="fcard" style="--c:var(--green);--c-bg:var(--green-bg)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></div><h3>Training &amp; mentorship</h3><p>Our advisors and trainers help students learn computational drug discovery hands-on.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="ctab">
+        <div>
+          <span class="eyebrow" style="background:rgba(255,255,255,.12);color:var(--gold-l)">Collaborate</span>
+          <h2 style="margin-top:14px">Ready to start your in silico project?</h2>
+          <p>Bring us a target, a compound or a plant extract. We plan the computational study with you and deliver results ready for publication.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn gold" href="#contact">Start a Project</a><a class="btn light" href="#research">Open Molecule Lab</a></div>
+        </div>
+        <div class="cta-art"><canvas id="ctaMol" aria-hidden="true"></canvas></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div id="view-about" hidden>
+  <div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / About</div><h1>About <em>Bioinventics</em></h1><p>Research, consultancy and computational drug discovery from Rajshahi, Bangladesh.</p></div></div>
+  <section class="sec">
+    <div class="wrap">
+      <div class="mv">
+        <article class="mvc" style="--c:var(--em);--c-bg:var(--mint-soft)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div><h3>Our Mission</h3><p>Shorten the path from a disease to a safe, potent lead compound using reproducible computational methods.</p></article>
+        <article class="mvc" style="--c:var(--gold);--c-bg:var(--gold-bg)"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Our Vision</h3><p>A research centre from Bangladesh whose computer-designed molecules reach the clinic.</p></article>
+      </div>
+      <div class="why2">
+        <div><b>Why nature</b><p>Natural products are secondary metabolites of plants, fungi, bacteria and other organisms, and remain one of the richest sources of medicines. Vinblastine, a cancer drug from the Madagascar periwinkle <i>Catharanthus roseus</i>, is a famous example.</p></div>
+        <div><b>Why computers</b><p>Extracting and testing every natural compound in the lab is slow and costly. Computer-aided drug design with docking and molecular dynamics screens candidates much faster and sends only the best ones to the bench.</p></div>
+      </div>
+      <div class="logo-story"><img src="logo.png" alt="Bioinventics Centre logo"><p><b style="color:var(--ink)">Our mark.</b> The laptop and atom stand for computation, the mortar and leaves for natural products, and the DNA for genomics. Together they make one lab, summed up in our motto: <i>Computer is your lab, now execute experiments.</i></p></div>
+    </div>
+  </section>
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Leadership</span><h2 class="h2">Meet the <span class="hl">Founder</span></h2></div>
+      <div class="founder">
+        <div class="av" data-photo><span>RI</span></div>
+        <div>
+          <span class="k">Founder &amp; CEO</span>
+          <h3>Md Rashedul Islam</h3>
+          <p class="role">B.Pharm · M.Pharm · M.Sc. Chemistry</p>
+          <p>A pharmacist and computational chemist working on natural-product drug discovery in the biochemistry lab at King Abdulaziz University, Jeddah. He founded Bioinventics to bring computer-aided drug design, molecular dynamics and quantum chemistry to research on bioactive natural compounds.</p>
+          <div class="tags"><span>Drug design</span><span>Molecular dynamics</span><span>DFT</span><span>Machine learning</span><span>Phytochemistry</span></div>
+          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn em" href="#founder">View Full Profile</a><a class="btn" href="#team">Meet the Team</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Impact</span><h2 class="h2">By the <span class="hl">Numbers</span></h2></div>
+      <div class="nums"><div><b>6</b><span>Peer-reviewed papers</span></div><div><b>4</b><span>International publishers</span></div><div><b>10</b><span>Partner institutions</span></div><div><b>5</b><span>Countries</span></div></div>
+      <div class="head center" style="margin:64px 0 28px"><h2 class="h2" style="font-size:clamp(24px,2.6vw,32px)">Our Collaboration Network</h2></div>
+      <div class="partners">
+        <div><b>King Abdulaziz University</b><span>Jeddah · Saudi Arabia</span></div><div><b>Varendra University</b><span>Rajshahi · Bangladesh</span></div><div><b>BCSIR Rajshahi Laboratories</b><span>Rajshahi · Bangladesh</span></div><div><b>Jazan University</b><span>Jazan · Saudi Arabia</span></div><div><b>King Faisal Medical City</b><span>Abha · Saudi Arabia</span></div>
+        <div><b>Dhofar University</b><span>Salalah · Oman</span></div><div><b>Cairo University</b><span>Giza · Egypt</span></div><div><b>Tanta University</b><span>Tanta · Egypt</span></div><div><b>University of Khartoum</b><span>Khartoum · Sudan</span></div><div><b>Prince Sultan Military Medical City</b><span>Riyadh · Saudi Arabia</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<div id="view-services" hidden>
+  <div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / Services</div><h1>Research <em>Services</em></h1><p>Use one service on its own or run the full pipeline with us. Every result comes with data, figures and methods text for your manuscript.</p></div></div>
+  <section class="sec"><div class="wrap"><div class="cat-grid" id="svc"></div></div></section>
+  <section class="sec alt" id="workflow">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Project Workflow</span><h2 class="h2">How a Project <span class="hl">Runs</span></h2><p class="lead">Six steps from disease to ranked lead. Select a step to see what it does and a real result from our papers.</p></div>
+      <div class="flow"><div class="steps" role="tablist" aria-label="Workflow steps" id="steps"></div><div class="flow-panel" role="tabpanel" id="flowPanel" aria-live="polite"></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= RESEARCH ================= -->
+<div id="view-research" hidden>
+  <div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / Research</div><h1>Our <em>Research</em></h1><p>Explore the molecules from our studies in 3D, and the three themes our work focuses on.</p></div></div>
+  <section class="sec" id="lab">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Interactive</span><h2 class="h2">Molecule <span class="hl">Lab</span></h2><p class="lead">Drag to rotate. Each molecule comes from one of our published studies, with the target and the scores we measured.</p></div>
+      <div class="lab">
+        <div class="viewer"><canvas id="labMol" aria-label="Interactive 3D molecule"></canvas><div class="vt" role="tablist" id="molTabs"></div><div class="hint">Illustrative 3D model · drag to rotate</div><div class="legend"><span><i style="background:#3D434B"></i>C</span><span><i style="background:#E0393E"></i>O</span><span><i style="background:#3B6FE0"></i>N</span><span><i style="background:#D4A20F"></i>S</span></div></div>
+        <div class="info" id="molInfo"></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="head center"><span class="eyebrow">Focus</span><h2 class="h2">Research <span class="hl">Areas</span></h2></div>
+      <div class="areas">
+        <article class="area" style="--c:var(--red);--c-bg:var(--red-bg)"><canvas data-art="cancer" width="800" height="300"></canvas><div class="bd"><h3>Cancer</h3><p>Kinase and enzyme inhibitors for melanoma, breast cancer and acute myeloid leukemia.</p><ul><li><span>Arbutin → AKT1</span><span>Melanoma</span></li><li><span>Zingerone → EGFR</span><span>Breast</span></li><li><span>Designed LOXL2 inhibitors</span><span>Breast</span></li><li><span>FLT3 virtual screen</span><span>AML</span></li></ul></div></article>
+        <article class="area" style="--c:var(--purple);--c-bg:var(--lav)"><canvas data-art="virus" width="800" height="300"></canvas><div class="bd"><h3>Viruses &amp; bacteria</h3><p>Antiviral peptides and antibiotic partners against dengue and multidrug-resistant pathogens.</p><ul><li><span>Camel-milk peptides → DDX3X</span><span>Dengue</span></li><li><span>Pandanus + azithromycin</span><span>MDR</span></li></ul></div></article>
+        <article class="area" style="--c:var(--green);--c-bg:var(--green-bg)"><canvas data-art="leaf" width="800" height="300"></canvas><div class="bd"><h3>Natural products</h3><p>Phytochemicals and food-derived peptides mapped to disease targets with network pharmacology.</p><ul><li><span>Arbutin, zingerone</span><span>Phenolics</span></li><li><span>Pandanus fascicularis</span><span>Extract</span></li><li><span>Camel-milk hydrolysates</span><span>Peptides</span></li></ul></div></article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PUBLICATIONS ================= -->
+<div id="view-publications" hidden>
+  <div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / Publications</div><h1>Our <em>Publications</em></h1><p>Every article published with the Bioinventics affiliation, 2023 – 2026. Open any paper to read its full abstract in a separate window.</p></div></div>
+  <div class="wrap results">
+    <aside class="side" aria-label="Filters"><div><h4>Research area</h4><div id="fArea"></div></div><div><h4>Year</h4><div id="fYear"></div></div><div><h4>Publisher</h4><div id="fPub"></div></div></aside>
+    <div>
+      <div class="rtop"><b id="rcount"></b><label class="rsearch" for="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" placeholder="Search titles and abstracts" autocomplete="off"></label></div>
+      <ol class="rlist" id="rlist"></ol>
+      <p class="empty" id="empty" hidden>No papers match these filters. <button class="link" id="clearF">Clear filters</button></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TEAM ================= -->
+<div id="view-team" hidden>
+  <div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / Team</div><h1>Our <em>Team</em></h1><p>A small team covering research, training, events and the web.</p></div></div>
+  <section class="sec"><div class="wrap"><div class="team" id="teamGrid"></div></div></section>
+</div>
+
+<!-- ================= FOUNDER ================= -->
+<!-- ============ FOUNDER & CEO VIEW ============ -->
+<div id="view-founder" hidden>
+  <section class="ceo-hero">
+    <div class="wrap ceo-grid">
+      <div class="ceo-photo">
+        <div class="av big" data-photo><span>RI</span></div>
+        <div class="ceo-badge"><b>Founder &amp; CEO</b><span>Bioinventics</span></div>
+      </div>
+      <div>
+        <span class="eyebrow">Founder &amp; CEO</span>
+        <h1>Md Rashedul <span class="serif">Islam</span></h1>
+        <p class="ceo-sub">Pharmacist · Computational chemist · Natural-product drug discovery</p>
+        <p class="lead" style="margin-top:22px">Md Rashedul Islam works on natural product-based drug discovery in the biochemistry lab at King Abdulaziz University, Jeddah, Saudi Arabia. Trained in pharmacy in Bangladesh and in physical chemistry in Saudi Arabia, he combines molecular simulation, quantum chemistry and machine learning with hands-on phytochemistry. He founded Bioinventics to make this computational pipeline available to researchers studying bioactive natural compounds.</p>
+        <div class="ceo-facts">
+          <div><b>6+</b><span>papers with Bioinventics</span></div>
+          <div><b>3</b><span>degrees in pharmacy &amp; chemistry</span></div>
+          <div><b>Oxford</b><span>AI in drug discovery programme</span></div>
+        </div>
+        <div class="cta" style="margin-top:30px">
+          <a class="btn gold" href="#publications">See his publications</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap ceo-body">
+    <section class="cv-block">
+      <h2 class="cv-h">Research interests</h2>
+      <div class="chips">
+        <span>Drug design &amp; discovery</span><span>Computational chemistry &amp; biology</span><span>Cancer research</span><span>Biophysics</span><span>Molecular cell biology</span><span>Machine learning</span><span>Deep learning</span><span>Bioinformatics</span><span>Peptide design</span><span>Phytochemistry</span>
+      </div>
+    </section>
+
+    <div class="cv-two">
+      <section class="cv-block">
+        <h2 class="cv-h">Education</h2>
+        <ol class="tl">
+          <li><span class="when">2022</span><div><b>M.Sc. in Chemistry (Physical Chemistry)</b><p>King Abdulaziz University, Saudi Arabia</p><em>CGPA 4.21 / 5.00 · fully funded KAU scholarship</em></div></li>
+          <li><span class="when">2019</span><div><b>M.Pharm in Industrial Pharmacy</b><p>Jagannath University, Bangladesh</p><em>CGPA 3.61 / 4.00</em></div></li>
+          <li><span class="when">2017</span><div><b>B.Pharm (Bachelor of Pharmacy)</b><p>Varendra University, Bangladesh</p><em>CGPA 3.86 / 4.00</em></div></li>
+        </ol>
+      </section>
+      <section class="cv-block">
+        <h2 class="cv-h">Experience</h2>
+        <ol class="tl">
+          <li><span class="when">Now</span><div><b>Founder &amp; CEO</b><p>Bioinventics, Advanced Biological Invention Centre, Rajshahi</p><em>Leads in silico drug design projects and collaborations</em></div></li>
+          <li><span class="when">2020 –</span><div><b>Research Assistant</b><p>King Abdulaziz University, Jeddah</p><em>Bioactive compounds from natural sources against cancer</em></div></li>
+          <li><span class="when">2015 – 17</span><div><b>Research Assistant</b><p>Varendra University, Rajshahi</p><em>Phytochemical screening of medicinal plants</em></div></li>
+          <li><span class="when">2013 – 15</span><div><b>Executive Member, Research &amp; Seminar</b><p>Pharma Bee, Varendra University</p></div></li>
+        </ol>
+      </section>
+    </div>
+
+    <section class="cv-block">
+      <h2 class="cv-h">Expertise</h2>
+      <div class="skills">
+        <article style="--c:var(--gold)"><h3>Computational chemistry</h3><p>Molecular dynamics (GROMACS) · Molecular docking · DFT &amp; quantum mechanics · Pharmacophore modelling · Computer-aided drug design · Ligand–protein interactions · Peptide design</p></article>
+        <article style="--c:var(--green)"><h3>Data science &amp; AI</h3><p>Python · Biopython · Machine learning · Deep learning · Multi-omics analysis · ADME analysis · Supercomputer operation</p></article>
+        <article style="--c:var(--purple)"><h3>Wet lab</h3><p>Cell culture · Seahorse assays · Natural-product extraction &amp; purification · HPLC · TLC · UV spectrophotometry · Antimicrobial &amp; resistance testing · Formulation</p></article>
+        <article style="--c:var(--cyan)"><h3>Tools &amp; databases</h3><p>ChemDraw · PyMOL · OpenBabel · NCBI · PDB · ChEMBL · ZINC</p></article>
+      </div>
+    </section>
+
+    <div class="cv-two">
+      <section class="cv-block">
+        <h2 class="cv-h">Awards &amp; training</h2>
+        <ul class="list">
+          <li><b>King Abdulaziz University Scholarship</b><span>Fully funded M.Sc., 2020 – 2022</span></li>
+          <li><b>Oxford University × KAU exchange</b><span>Artificial Intelligence and Drug Discovery, 2021</span></li>
+          <li><b>AI in precision medicine &amp; drug discovery</b><span>Ten-day project work, Oxford / KAU, Nov 2021</span></li>
+          <li><b>HPLC training</b><span>BCSIR Rajshahi Laboratories</span></li>
+          <li><b>In-plant industrial training</b><span>Essential Drugs Company Ltd., Bogra</span></li>
+          <li><b>Poster presenter</b><span>18th International Congress of the International Society for Ethnopharmacology</span></li>
+        </ul>
+      </section>
+      <section class="cv-block">
+        <h2 class="cv-h">Talks &amp; service</h2>
+        <ul class="list">
+          <li><b>Peer reviewer</b><span>Scientific Reports</span></li>
+          <li><b>FLT3 inhibitors for AML: docking &amp; dynamics</b><span>13th KAU Scientific Forum, 2022</span></li>
+          <li><b>Iodine content of iodized salt in Bangladesh</b><span>ISE-SFE Conference, University of Dhaka, 2018</span></li>
+          <li><b>Self-medication with antibiotics in Bangladesh</b><span>International Conference on Biological Sciences, University of Rajshahi, 2015</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="cv-block">
+      <h2 class="cv-h">Other publications</h2>
+      <ul class="list">
+        <li><b>Bioactive compounds from <i>Catharanthus roseus</i> and <i>Avicennia marina</i> against colorectal cancer</b><span>Molecules, 2022, 27(7):2089</span></li>
+        <li><b>Errors and medication patterns in handwritten prescriptions in Bangladesh</b><span>Journal of Applied Pharmaceutical Science, 2016</span></li>
+        <li><b>Antibacterial, cytotoxic and insecticidal activity of <i>Hibiscus sabdariffa</i> bark</b><span>IJPRR, 2015</span></li>
+      </ul>
+      <p style="margin-top:18px"><a class="btn" href="#publications">Bioinventics publications with abstracts →</a></p>
+    </section>
+
+    <section class="cv-block ceo-contact">
+      <div><h2 class="cv-h" style="margin:0">Get in touch</h2><p style="color:var(--dim);margin-top:6px">For collaborations, training or research questions.</p></div>
+      <div class="cinfo" style="margin:0">
+        <div><span class="lb">Personal</span><span class="v">rashed.pharm.jnu@gmail.com</span></div>
+        <div><span class="lb">Company</span><span class="v">bioinventics@gmail.com</span></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!-- ================= CONTACT ================= -->
+<div id="view-contact" hidden>
+  <div class="phero"><div class="wrap"><div class="crumbs"><a href="#home">Home</a> / Contact</div><h1>Contact <em>Bioinventics</em></h1><p>Send us a compound, a plant extract or a disease target. We reply with a scope, the methods we would use and a timeline.</p></div></div>
+  <section class="sec">
+    <div class="wrap">
+      <div class="chan">
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><b>Company email</b><span>bioinventics@gmail.com</span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><b>Founder</b><span>rashed.pharm.jnu@gmail.com</span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><b>Location</b><span>Rajshahi 6204, Bangladesh</span></div>
+        <a href="https://sites.google.com/view/mdrashedulislam/research-center" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><b>Founder’s website ↗</b><span>sites.google.com/view/mdrashedulislam</span></a>
+      </div>
+      <div class="contact">
+        <div>
+          <span class="eyebrow">Get in touch</span>
+          <h2 class="h2">Have a target? <span class="hl">Let’s run it.</span></h2>
+          <p class="lead">We work with universities, hospitals, pharma companies and students on computational drug discovery projects of any size.</p>
+          <div class="cinfo">
+            <div><span class="lb">Email</span><span class="v" id="email">bioinventics@gmail.com</span><button type="button" class="btn sm" id="copyEmail">Copy</button></div>
+            <div><span class="lb">Services</span><span class="v" style="font-weight:600">Network pharmacology · Screening · Docking · MD · DFT · ADMET · Peptides</span></div>
+          </div>
+        </div>
+        <form class="inq" id="inq" novalidate>
+          <h3>Send a Message</h3>
+          <div class="row"><label for="q-name">Your name<input id="q-name" required placeholder="Dr. A. Rahman"></label><label for="q-org">Institution<input id="q-org" placeholder="University / company"></label></div>
+          <label for="q-mail">Your email<input id="q-mail" type="email" required placeholder="you@university.edu"></label>
+          <div><span style="font-size:14px;font-weight:700;display:block;margin-bottom:8px;color:var(--ink)">Services needed</span><div class="svcpick" id="svcpick"></div></div>
+          <label for="q-msg">About your project<textarea id="q-msg" placeholder="Target, compound or disease, and what you want to find out"></textarea></label>
+          <button class="btn gold" type="submit" id="q-send">Prepare my message</button>
+          <p class="formnote">This prepares your message and copies it, ready to paste into an email to bioinventics@gmail.com.</p>
+          <div class="out" id="q-out" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<!-- READER WINDOW -->
+<div class="reader" id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="r-title">
+  <div class="scrim" data-close></div>
+  <div class="win">
+    <div class="chrome"><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><div class="addr" id="r-addr"></div><button class="x" data-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="body" id="r-body"></div>
+    <div class="foot"><button class="btn sm" id="r-prev">← Previous</button><button class="btn sm" id="r-next">Next →</button><span class="sp"></span><button class="btn sm" id="r-cite">Copy citation</button><a class="btn sm pri" id="r-doi" target="_blank" rel="noopener">Read full article ↗</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap fnews"><div><h3>Have a research idea?</h3><p>Tell us about your target or compound and we will plan the study together.</p></div><a class="btn gold" href="#contact">Contact Us</a></div>
+  <div class="wrap fgrid">
+    <div class="fbrand"><img src="logo.png" alt="Bioinventics logo"><div><b>Bioinventics</b><p>Advanced Biological Invention Centre. In silico drug discovery for cancer and infectious disease.</p></div></div>
+    <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#team">Team</a></li><li><a href="#founder">Founder &amp; CEO</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h4>Research</h4><ul><li><a href="#services">Services</a></li><li><a href="#workflow">Workflow</a></li><li><a href="#lab">Molecule Lab</a></li><li><a href="#publications">Publications</a></li></ul></div>
+    <div><h4>Contact Info</h4><ul><li><a href="#contact">bioinventics@gmail.com</a></li><li><a href="#contact">rashed.pharm.jnu@gmail.com</a></li><li><a href="#contact">Rajshahi 6204, Bangladesh</a></li></ul></div>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Bioinventics · Advanced Biological Invention Centre</span><i>Computer is your lab, now execute experiments</i></div>
+  <div class="checker" aria-hidden="true"></div>
+</footer>
+
+<script>
+
+const MOLS = {"arbutin":{"atoms":[["O",-4.424,1.409,-3.739],["C",-3.079,0.946,-3.235],["C",-1.788,0.398,-2.752],["O",-1.313,0.151,-1.337],["C",0.028,-0.292,-0.643],["O",0.403,-0.128,0.822],["C",0.632,0.111,2.255],["C",0.338,-0.596,3.578],["C",0.615,-0.435,4.992],["C",1.444,0.547,5.789],["O",1.775,0.707,7.139],["C",1.751,1.31,4.518],["C",1.402,1.103,3.131],["C",0.802,-0.965,-1.778],["O",1.714,-2.199,-2.177],["C",0.331,-0.527,-3.151],["O",1.378,-0.87,-4.266],["C",-1.008,-0.346,-3.84],["O",-1.0,-0.324,-5.306]],"bonds":[[0,1,1],[1,2,1],[2,3,1],[3,4,1],[4,5,1],[5,6,1],[6,7,1.5],[7,8,1.5],[8,9,1.5],[9,10,1],[9,11,1.5],[11,12,1.5],[6,12,1.5],[4,13,1],[13,14,1],[13,15,1],[15,16,1],[15,17,1],[2,17,1],[17,18,1]]},"zingerone":{"atoms":[["C",-3.189,0.855,-4.534],["C",-2.146,1.466,-3.597],["O",-2.117,2.774,-4.389],["C",-1.597,1.068,-2.365],["C",-0.873,0.586,-1.308],["C",-0.288,0.164,-0.052],["C",-0.988,0.46,1.31],["C",-0.275,-0.07,2.473],["C",0.992,-0.768,2.919],["O",1.077,-0.915,4.359],["C",1.586,-0.971,1.577],["O",2.786,-1.729,1.66],["C",4.097,-2.378,1.586],["C",0.935,-0.543,0.362]],"bonds":[[0,1,1],[1,2,2],[1,3,1],[3,4,1],[4,5,1],[5,6,1.5],[6,7,1.5],[7,8,1.5],[8,9,1],[8,10,1.5],[10,11,1],[11,12,1],[10,13,1.5],[5,13,1.5]]},"thiamine":{"atoms":[["C",-2.819,4.318,-4.428],["C",-2.539,3.476,-3.279],["N",-1.796,2.078,-3.502],["C",-1.427,1.375,-2.263],["C",-1.089,1.432,-0.779],["C",-0.429,0.429,0.056],["N",0.304,-0.586,0.786],["C",1.44,-0.233,1.765],["S",2.308,-1.333,2.251],["C",1.833,-2.563,1.563],["C",2.414,-3.715,2.074],["C",3.674,-4.429,2.266],["O",4.408,-5.684,2.446],["C",0.42,-2.062,1.187],["C",-0.415,-2.555,2.434],["C",-1.761,2.782,-0.765],["N",-2.673,3.611,0.166],["N",-1.854,3.657,-1.976]],"bonds":[[0,1,1],[1,2,1.5],[2,3,1.5],[3,4,1.5],[4,5,1],[5,6,1],[6,7,1.5],[7,8,1.5],[8,9,1.5],[9,10,1],[10,11,1],[11,12,1],[9,13,1.5],[6,13,1.5],[13,14,1],[4,15,1.5],[15,16,1],[15,17,1.5],[1,17,1.5]]}};
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const PUBS = [
+ {id:"arbutin", year:2026, area:"cancer", tag:"Melanoma", c:"var(--red)",
+  title:"Exploring the Molecular Mechanism of Arbutin as a Potential Inhibitor Against Melanoma: Insights from Network Pharmacology, Molecular Docking, Dynamics Simulations, and DFT Analysis",
+  journal:"Journal of Pharmaceutical Innovation", pub:"Springer Nature", vol:"2026; 21:452", doi:"10.1007/s12247-026-10669-w",
+  authors:"Islam MR, Qadri I, Afzal M, Rafeeq M, Alfaifi A, Alfaifi KA, Alzarea SI, Ali EMM, Kazmi I",
+  abs:"Melanoma, a type of skin cancer, fifth leading cause of cancer-related mortality due to its propensity to metastasize from the skin to other organs, largely driven by the constitutive activation of the PI3K/AKT signaling axis. This study aimed to investigate the inhibitory mechanisms and biological pathways of Arbutin (ArB) in melanoma. ArB, a bioactive compound, and its targets were identified from CTD, PharmMapper, Swiss Target Prediction, and ETCM. Similarly, disease-related targets were obtained using GeneCards, GEO, and the CTD database. A Venn diagram showed overlapping targets between the two groups. GO, KEGG enrichment analysis, and PPI networks were adopted to identify potential core targets associated with ArB and melanoma. Stability and affinity were evaluated using molecular docking, 100 ns molecular dynamics (MD) simulation, principal component analysis (PCA), free energy landscape (FEL), and density functional theory (DFT) analyses. AKT1 emerged as a key gene with strong binding to ArB, exhibiting an affinity of −7.9 kcal/mol as determined by molecular docking. MMGBSA and MMPBSA ΔTotal energies of −37.17 and −22.15 kcal/mol, respectively, further supported the effective binding affinity. Furthermore, DFT calculations determined a HOMO-LUMO energy gap of 5.72 eV, confirming the molecule’s kinetic stability and favorable electronic reactivity. ADMET analysis confirmed a safety profile but can induce nephrotoxicity, which should be evaluated in vivo. We explored ArB as a potential AKT1 inhibitor and propose that it could serve as a lead compound for the development of targeted melanoma treatments."},
+ {id:"zingerone", year:2026, area:"cancer", tag:"Breast cancer", c:"var(--red)",
+  title:"Zingerone as a Promising Natural Inhibitor of EGFR in Breast Cancer: Integrative Approaches Combining Network Pharmacology, Molecular Docking, Dynamics Simulation, DFT, and ADMET Profiling",
+  journal:"ChemistrySelect", pub:"Wiley-VCH", vol:"2026; 11:e73132", doi:"10.1002/slct.73132",
+  authors:"Islam MR, Alfaifi A, Alfaifi KA, Mahzary AS, Habib AH, Rafeeq M, Zalah AA, Masmali AH, Ali EMM, Kazmi I",
+  abs:"Breast cancer (BC) is the leading cause of mortality from malignancy in women, and a definitive cure is still sought. Therefore, it is imperative to develop effective therapies to combat this deadly disease. This research addresses this need through comprehensive network pharmacology and in silico approaches to investigate the anticancer activity of zingerone. The top 10 drug-disease associated gene targets were identified based on GO and KEGG analyses. Epidermal growth factor receptor (EGFR) was considered a core gene associated with BC using PPI mapping. The EGFR-ZinG complex exhibited the strongest affinity, with a molecular docking score of −6.4 kcal/mol. Further analysis of the pharmacokinetic properties indicated that ZinG did not breach the Lipinski Rule of Five, confirming its drug-like properties. The clinical relevance of the core targets was assessed using the GEPIA, HPA, TIMER, and cBioPortal databases. MD simulation during a 100 ns period, coupled with the determination of RMSD, RMSF, and Rg, indicated steady complex formation. Principal component analysis also revealed that the ZinG-EGFR complex formed a tight structure. Overall, these findings suggest that ZinG may be a promising drug candidate for BC by targeting an EGFR-centric signaling pathway and warrant further clinical research."},
+ {id:"pandanus", year:2025, area:"infect", tag:"MDR bacteria", c:"var(--purple)",
+  title:"Synergistic effects of Pandanus fascicularis extracts and azithromycin: in vitro and in silico antimicrobial investigation against MDR clinical strains",
+  journal:"Frontiers in Antibiotics", pub:"Frontiers", vol:"2025; 4:1552382", doi:"10.3389/frabi.2025.1552382",
+  authors:"Khatun MH, Islam MR, Khatun S, Zalah AA, Rony MHR, Khatun MM, Wasili EEA, Barmon J, Sami SA, Masmali AH, Qadri I",
+  abs:"Background: Antibiotic-resistant bacteria are becoming a significant global concern. To combat the spread of resistance or reverse multidrug resistance, developing novel antimicrobials and/or resistance modulators is essential. This study aimed to evaluate the synergistic effects of the methanolic extract of Pandanus fascicularis fruits (MEPFF) in combination with azithromycin against multidrug-resistant bacteria.\nMethods: Phytochemical analysis along with the determination of total phenolic content (TPC), total flavonoid content (TFC), and total antioxidant capacity (TAC) of MEPFF, was performed using standard procedure. The extract's DPPH free radical scavenging activity was assessed to evaluate its potential antioxidant activity. The minimal inhibitory concentration (MIC) and minimal bactericidal concentration (MBC) of MEPFF against Staphylococcus aureus, Bacillus cereus, Escherichia coli, and Pseudomonas aeruginosa were determined, followed by an analysis of the synergistic effect with azithromycin, as well as the activity of azithromycin alone. Subsequently, the drug-likeness, antibacterial activity, and toxicological properties were analyzed using in silico tools.\nResults: The quantitative investigation found terpenoids, flavonoids, tannins, phenolics, saponins, cardiac glycosides, and alkaloids in MEPFF. The TFC, TPC, and TAC of MEPFF were found at 183 ± 9.54 mg QE, 248.33 ± 11.06 mg GAE, and 95.33 ± 8.33 mg AAE/gm extract. The extract showed significant antioxidant activity in the DPPH experiment, with an IC50 value of 12.13 ± 0.53 µg/ml. Azithromycin and the extract together have far greater antibacterial action against all four bacterial strains. The minimal inhibitory concentration (MIC) is 3.67 ± 1.15 to 5.83 ± 0.76 mg/mL, while the minimum bactericidal concentration (MBC) is 4.33 ± 1.26 to 7.33 ± 1.04 mg/mL. In silico studies revealed that pandamarilactone-1, nonpandamarilactone-B, and thiamine had the best docking energy (−9.9, −8.9, and −8.5 kcal/mol), suggesting most active compounds against MPh-II protein.\nConclusion: The extract enhances antibiotic therapy and suggests that the aforesaid synergistic drug-herb combinations may treat MDR bacterial infections."},
+ {id:"loxl2", year:2024, area:"cancer", tag:"Breast cancer", c:"var(--red)",
+  title:"Exploring breast cancer treatment paradigms: innovative design, molecular docking and dynamic simulation of LOXL2 inhibitors",
+  journal:"Molecular Simulation", pub:"Taylor & Francis", vol:"2024", doi:"10.1080/08927022.2024.2333907",
+  authors:"Baothman OA, Islam MR",
+  abs:"The impact of the LOXL2 enzyme on cell invasion and metastasis is significantly notable in breast cancer (BC), making it a promising therapeutic target in cancer drug discovery. Considering the diverse functions of lysyl oxidase both extracellularly and intracellularly, inhibiting LOX activity emerges as a strategic approach to impede cancer progression and invasion. This study is uniquely designed to identify potential small molecules targeting LOXL2 in BC. Initially, we designed small molecules and conducted docking studies using ChemDraw and AutoDock Vina, respectively. Assessment of ADME, drug-likeness and toxicological properties was carried out using online tools such as SwissADME, admetSAR, pkCSM and ProTox-II. The best docked candidates underwent further evaluation through 100 ns molecular dynamics simulations. Compound H.2.9 scored −8.4 kcal/mol in docking, surpassing the control’s (US10717733) −5.0 kcal/mol, indicating its potential as an LOXL2 inhibitor. ADME predictions indicated that all screened compounds adhere to Lipinski’s rule of five. Additionally, toxicological predictions confirmed that these compounds are non-cytotoxic, non-hepatotoxic and non-carcinogenic. The RMSD, RMSF and MM-GBSA analyses affirmed the stability of the H.2.9 compound. The development of LOXL2 inhibitors instils optimism for effective therapies against both primary and metastatic cancers in the foreseeable future, contributing to advancements in cancer research."},
+ {id:"dengue", year:2023, area:"infect", tag:"Dengue virus", c:"var(--purple)",
+  title:"Identification of natural antimicrobial peptides mimetic to inhibit Ca²⁺ influx DDX3X activity for blocking dengue viral infectivity",
+  journal:"Journal of Bioenergetics and Biomembranes", pub:"Springer Nature", vol:"2023", doi:"10.1007/s10863-023-09996-1",
+  authors:"Asseri AH, Islam MR, Alghamdi RM, Altayb HN",
+  abs:"Viruses are microscopic biological entities that can quickly invade and multiply in a living organism. Each year, over 36,000 people die and nearly 400 million are infected with the dengue virus (DENV). Despite dengue being an endemic disease, no targeted and effective antiviral peptide resource is available against the dengue species. Antiviral peptides (AVPs) have shown tremendous ability to fight against different viruses. Accelerating antiviral drug discovery is crucial, particularly for RNA viruses. DDX3X, a vital cell component, supports viral translation and interacts with TRPV4, regulating viral RNA metabolism and infectivity. Its diverse signaling pathway makes it a potential therapeutic target. Our study focuses on inhibiting viral RNA translation by blocking the activity of the target gene and the TRPV4-mediated Ca²⁺ cation channel. Six major proteins from camel milk were first extracted and split with the enzyme pepsin. The antiviral properties were then analyzed using online bioinformatics programs, including AVPpred, Meta-iAVP, AMPfun, and ENNAVIA. The stability of the complex was assessed using MD simulation, MM/GBSA, and principal component analysis. Cytotoxicity evaluations were conducted using COPid and ToxinPred. The top ten AVPs, determined by optimal scores, were selected and saved for docking studies with the GalaxyPepDock tools. Bioinformatics analyses revealed that the peptides had very short hydrogen bond distances (1.8 to 3.6 Å) near the active site of the target protein. Approximately 76% of the peptide residues were 5–11 amino acids long. Additionally, the identified peptide candidates exhibited desirable properties for potential therapeutic agents, including a net positive charge, moderate toxicity, hydrophilicity, and selectivity. In conclusion, this computational study provides promising insights for discovering peptide-based therapeutic agents against DENV."},
+ {id:"flt3", year:2023, area:"cancer", tag:"Leukemia · AML", c:"var(--red)",
+  title:"Identifying novel therapeutic inhibitors to target FMS-like tyrosine kinase-3 (FLT3) against acute myeloid leukemia: a molecular docking, molecular dynamics, and DFT study",
+  journal:"Journal of Biomolecular Structure and Dynamics", pub:"Taylor & Francis", vol:"2023", doi:"10.1080/07391102.2023.2192798",
+  authors:"Islam MR, Osman OI, Hassan WMI",
+  abs:"Around 30% of acute myeloid leukemia (AML) patients have triggering mutations in Feline McDonough Sarcoma (FMS)-like tyrosine kinase 3 (FLT3), which has been suggested as a possible therapeutic candidate for AML therapy. Many tyrosine kinase inhibitors are available and have a wide variety of applications in the treatment of cancer by inhibiting subsequent steps of cell proliferation. Therefore, our study aims to identify effective antileukemic agents against FLT3 gene. Initially, well-known antileukemic drug candidates have been chosen to generate a structure-based pharmacophore model to assist the virtual screening of 21,777,093 compounds from the Zinc database. The final hits compounds were retrieved and evaluated by docking against the target protein, where the top four compounds have been selected for the analysis of ADMET. Based on the density functional theory (DFT), the geometry optimization, frontier molecular orbital (FMO), HOMO-LUMO, and global reactivity descriptor values have been evaluated that confirming a satisfactory profile and reactivity order for the selected candidates. In comparison to control compounds, the docking results revealed that the four compounds had substantial binding energies (−11.1 to −11.5 kcal/mol) with FLT3. The physicochemical and ADMET (adsorption, distribution, metabolism, excretion, toxicity) prediction results corresponded to the bioactive and safe candidates. Molecular dynamics (MD) confirmed the better binding affinity and stability compared to gilteritinib as a potential FLT3 inhibitor. In this study, a computational approach has been performed that found a better docking and dynamics score against target proteins, indicating potent and safe antileukemic agents, furthermore in-vivo and in-vitro investigations are recommended."}
+];
+
+const ICON = {
+ net:'<circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><circle cx="12" cy="10" r="2"/><path d="M7 7l3.4 2M17 7l-3.4 2M12 12v3.8"/>',
+ screen:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M7 12l3-3 2 2 4-4"/>',
+ dock:'<path d="M4 14c3 0 3-5 6-5s3 5 6 5 3-5 4-5"/><circle cx="10" cy="9" r="1.6"/><path d="M4 19h16"/>',
+ md:'<circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
+ energy:'<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
+ dft:'<path d="M3 20h18"/><path d="M6 16h4M14 16h4M6 9h4M14 9h4"/><path d="M8 16V9M16 16V9" stroke-dasharray="2 2"/><path d="M12 4v3"/>',
+ admet:'<path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+ pep:'<circle cx="5" cy="12" r="2.2"/><circle cx="12" cy="7" r="2.2"/><circle cx="19" cy="12" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M7 11l3-2.6M14 8.4l3 2.6M17 13l-3 2.6M10 15.6L7 13"/>'
+};
+const SERVICES = [
+ ["net","Network pharmacology","Link a compound to disease genes and find the core target through GO, KEGG and PPI analysis.","GeneCards · CTD · GEO · STRING","var(--gold)"],
+ ["screen","Virtual screening","Pharmacophore-based screening of million-compound libraries to find the best starting hits.","ZINC · pharmacophore models","var(--green)"],
+ ["dock","Molecular docking","Binding poses and affinities, benchmarked against a known control drug.","AutoDock Vina · GalaxyPepDock","var(--cyan)"],
+ ["md","Molecular dynamics","100 ns simulations with RMSD, RMSF, Rg, PCA and free energy landscapes.","MD · PCA · FEL","var(--purple)"],
+ ["energy","Binding free energy","MM-GBSA and MM-PBSA calculations to confirm what docking predicts.","MM-GBSA · MM-PBSA","var(--gold)"],
+ ["dft","DFT & quantum chemistry","Geometry optimisation, HOMO–LUMO gaps and global reactivity descriptors.","DFT · FMO analysis","var(--red)"],
+ ["admet","ADMET & toxicity","Drug-likeness, pharmacokinetics and toxicity prediction before any lab work.","SwissADME · pkCSM · ProTox","var(--leaf)"],
+ ["pep","Peptide discovery","Antiviral and antimicrobial peptide prediction, docking and stability testing.","AVPpred · ENNAVIA · ToxinPred","var(--green)"]
+];
+const STEPS = [
+ {t:"Target discovery", s:"Network pharmacology", p:"We collect compound targets and disease genes from public databases, find where they overlap, and run GO, KEGG and protein–protein interaction analysis to pick the single most important target.", tools:["GeneCards","CTD","GEO","SwissTargetPrediction","PharmMapper","STRING"], v:"AKT1", d:"Identified as the core target of arbutin in melanoma from the overlap of drug and disease genes.", ref:"arbutin"},
+ {t:"Screening & design", s:"Find or design hits", p:"For a known target we screen huge compound libraries with a pharmacophore model built from approved drugs. When nothing fits, we design new molecules or peptides from scratch.", tools:["ZINC database","Pharmacophore","ChemDraw","AVPpred","Meta-iAVP"], v:"21,777,093", d:"Compounds from the ZINC database screened against FLT3 for acute myeloid leukemia.", ref:"flt3"},
+ {t:"Molecular docking", s:"Pose & affinity", p:"Every hit is docked into the active site and ranked by binding energy. We always dock a reference drug too, so our candidates are judged against a real benchmark.", tools:["AutoDock Vina","GalaxyPepDock","PyMOL","Discovery Studio"], v:"−8.4 vs −5.0", d:"Our designed compound H.2.9 against the LOXL2 control inhibitor, in kcal/mol.", ref:"loxl2"},
+ {t:"Molecular dynamics", s:"100 ns stability", p:"The best complexes are simulated in water for 100 ns. RMSD, RMSF, radius of gyration, PCA and free energy landscapes show whether the drug stays bound.", tools:["100 ns MD","RMSD / RMSF","Rg","PCA","FEL"], v:"100 ns", d:"Zingerone stayed stably bound to EGFR through the full simulation.", ref:"zingerone"},
+ {t:"Binding free energy", s:"MM-GBSA / PBSA", p:"End-state free energy calculations on the simulation frames give a more reliable binding estimate than docking scores alone.", tools:["MM-GBSA","MM-PBSA"], v:"−37.17", d:"MM-GBSA ΔTotal (kcal/mol) for the arbutin–AKT1 complex.", ref:"arbutin"},
+ {t:"DFT & ADMET", s:"Electronics & safety", p:"Density functional theory describes each lead’s reactivity and stability. ADMET tools then predict absorption, metabolism and toxicity, so only safe leads go to the lab.", tools:["DFT","HOMO–LUMO","SwissADME","pkCSM","ProTox-II","admetSAR"], v:"5.72 eV", d:"HOMO–LUMO gap of arbutin, showing good kinetic stability.", ref:"arbutin"}
+];
+const MOLINFO = {
+ arbutin:{name:"Arbutin", kind:"Hydroquinone glycoside · C₁₂H₁₆O₇", target:"AKT1", disease:"Melanoma", m:[["−7.9","docking, kcal/mol"],["−37.17","MM-GBSA, kcal/mol"],["5.72 eV","HOMO–LUMO gap"],["100 ns","MD simulation"]], text:"A natural compound found in bearberry and pear leaves. Our study found it binds AKT1, a key driver of melanoma growth, and stays stable in simulation.", ref:"arbutin"},
+ zingerone:{name:"Zingerone", kind:"Phenolic from ginger · C₁₁H₁₄O₃", target:"EGFR", disease:"Breast cancer", m:[["−6.4","docking, kcal/mol"],["0","Lipinski violations"],["100 ns","MD simulation"],["Top 10","hub genes found"]], text:"The compound that gives cooked ginger its sweet aroma. Network pharmacology pointed to EGFR as its core breast-cancer target, confirmed by docking and dynamics.", ref:"zingerone"},
+ thiamine:{name:"Thiamine", kind:"Vitamin B1 · from Pandanus fruit", target:"MPh-II", disease:"MDR bacteria", m:[["−8.5","docking, kcal/mol"],["4","bacterial strains tested"],["12.13","DPPH IC₅₀, µg/ml"],["+ AZM","synergy with azithromycin"]], text:"One of the top-scoring compounds from Pandanus fascicularis fruit, whose extract boosted azithromycin against multidrug-resistant clinical strains.", ref:"pandanus"}
+};
+
+
+
+/* light-theme colours for the shared data */
+const AREA = {cancer:{c:"var(--red)", b:"r", label:"Cancer", bg:["#FFF1EC","#FBD9CC"]}, infect:{c:"var(--purple)", b:"p", label:"Infectious disease", bg:["#F1ECFC","#DDD2F7"]}};
+const SHORT = {"Springer Nature":"Springer Nature","Wiley-VCH":"Wiley","Frontiers":"Frontiers","Taylor & Francis":"Taylor & Francis"};
+const KEY = {arbutin:"AKT1 · −7.9 kcal/mol", zingerone:"EGFR · −6.4 kcal/mol", pandanus:"MIC 3.67 mg/mL", loxl2:"H.2.9 · −8.4 kcal/mol", dengue:"10 lead peptides", flt3:"21.7M screened"};
+const THUMB = {arbutin:{mol:"arbutin"}, zingerone:{mol:"zingerone"}, pandanus:{mol:"thiamine"}, loxl2:{art:"cancer"}, dengue:{art:"virus"}, flt3:{art:"dna"}};
+
+/* ---------- molecule renderer (light) ---------- */
+const COL = {C:"#3D434B",O:"#E0393E",N:"#3B6FE0",S:"#D4A20F"}, RAD = {C:.62,O:.6,N:.6,S:.78};
+function shade(hex,k){ const n=parseInt(hex.slice(1),16); return `rgb(${(n>>16)*k|0},${((n>>8)&255)*k|0},${(n&255)*k|0})`; }
+function drawMol(ctx, W, H, m, ax, ay, scaleK, pal=COL){
+  let R = 0; m.atoms.forEach(a => R = Math.max(R, Math.hypot(a[1],a[2],a[3])));
+  const s = Math.min(W,H)*scaleK/R, cy=Math.cos(ay), sy=Math.sin(ay), cx=Math.cos(ax), sx=Math.sin(ax);
+  const P = m.atoms.map(a => { const x=a[1]*cy+a[3]*sy, z=-a[1]*sy+a[3]*cy, y=a[2]; const y2=y*cx-z*sx, z2=y*sx+z*cx; const f=9/(9+z2*.35); return {e:a[0], x:W/2+x*s*f, y:H/2+y2*s*f, z:z2, f}; });
+  const items = [];
+  m.bonds.forEach(([i,j,o]) => items.push({z:(P[i].z+P[j].z)/2+.01, b:[P[i],P[j],o]}));
+  P.forEach(p => items.push({z:p.z, a:p})); items.sort((a,b) => b.z-a.z);
+  for(const it of items){
+    const depth = Math.max(.35, Math.min(1, .7 - it.z/(R*2.2)));
+    if(it.b){ const [a,b,o]=it.b, dx=b.x-a.x, dy=b.y-a.y, L=Math.hypot(dx,dy)||1, nx=-dy/L, ny=dx/L; const lines = o>=2?[-1,1]:o===1.5?[0,1]:[0];
+      lines.forEach((k,idx) => { const off=k*s*.09; ctx.beginPath(); ctx.moveTo(a.x+nx*off,a.y+ny*off); ctx.lineTo(b.x+nx*off,b.y+ny*off);
+        const g=ctx.createLinearGradient(a.x,a.y,b.x,b.y); g.addColorStop(0,pal[a.e]); g.addColorStop(1,pal[b.e]); ctx.strokeStyle=g;
+        const ar = o===1.5&&idx===1; ctx.globalAlpha=depth*(ar?.5:.95); ctx.lineWidth=s*(ar?.07:.13)*a.f; if(ar) ctx.setLineDash([s*.15,s*.12]); ctx.stroke(); ctx.setLineDash([]); });
+    } else { const p=it.a, rr=s*RAD[p.e]*.55*p.f, c=pal[p.e]||"#555";
+      const g=ctx.createRadialGradient(p.x-rr*.35,p.y-rr*.4,rr*.1,p.x,p.y,rr); g.addColorStop(0,"#fff"); g.addColorStop(.3,c); g.addColorStop(1,shade(c,.45+.35*depth));
+      ctx.globalAlpha=.55+.45*depth; ctx.beginPath(); ctx.arc(p.x,p.y,rr,0,7); ctx.fillStyle=g; ctx.fill(); }
+  }
+  ctx.globalAlpha = 1;
+}
+function MolView(canvas, opts={}){
+  const ctx = canvas.getContext('2d'); let mol, ax=-.35, ay=0, drag=null, vy=opts.speed ?? .006, visible=true;
+  function size(){ const r=canvas.getBoundingClientRect(), d=Math.min(devicePixelRatio||1,2); canvas.width=Math.max(1,r.width*d); canvas.height=Math.max(1,r.height*d); ctx.setTransform(d,0,0,d,0,0); }
+  function draw(){ const r=canvas.getBoundingClientRect(); ctx.clearRect(0,0,r.width,r.height); if(mol) drawMol(ctx, r.width, r.height, mol, ax, ay, opts.scale ?? .38, opts.pal || COL); }
+  canvas.addEventListener('pointerdown', e => { drag={x:e.clientX,y:e.clientY,ax,ay}; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointermove', e => { if(!drag) return; ay=drag.ay+(e.clientX-drag.x)*.01; ax=drag.ax+(e.clientY-drag.y)*.01; draw(); });
+  canvas.addEventListener('pointerup', () => drag=null); canvas.addEventListener('pointercancel', () => drag=null);
+  canvas.style.touchAction = 'pan-y';
+  new IntersectionObserver(es => visible = es[0].isIntersecting).observe(canvas);
+  addEventListener('resize', () => { size(); draw(); });
+  function loop(){ if(!drag && !reduce) ay += vy; if(visible) draw(); requestAnimationFrame(loop); }
+  size();
+  return { set(n){ mol = MOLS[n]; draw(); }, start(){ loop(); } };
+}
+const DARKPAL = {C:"#D9E7E1",O:"#FF6B6B",N:"#7FA8FF",S:"#F5C542"};
+const hero = MolView($('#heroMol'), {scale:.36, pal:DARKPAL}); hero.set('arbutin'); hero.start();
+const cta = MolView($('#ctaMol'), {scale:.36, speed:.005}); cta.set('zingerone'); cta.start();
+
+/* ---------- canvas art for thumbnails & areas ---------- */
+function art(ctx, W, H, kind, col){
+  const C = [W/2, H/2], m = Math.min(W,H);
+  ctx.lineWidth = Math.max(1.5, m/120);
+  if(kind==='cancer'){ for(let r=m*.08;r<m*.62;r+=m*.06){ ctx.strokeStyle=`rgba(${col},${.55-r/m*.7})`; ctx.beginPath(); for(let a=0;a<=Math.PI*2+.01;a+=.04){ const rr=r+Math.sin(a*6+r)*m*.015; const x=C[0]+Math.cos(a)*rr*1.4, y=C[1]+Math.sin(a)*rr; a?ctx.lineTo(x,y):ctx.moveTo(x,y);} ctx.stroke(); }
+    ctx.fillStyle=`rgba(${col},.9)`; ctx.beginPath(); ctx.arc(C[0],C[1],m*.07,0,7); ctx.fill(); }
+  if(kind==='virus'){ const R=m*.26; for(let i=0;i<20;i++){ const a=i/20*Math.PI*2; ctx.strokeStyle=`rgba(${col},.7)`; ctx.beginPath(); ctx.moveTo(C[0]+Math.cos(a)*R,C[1]+Math.sin(a)*R); ctx.lineTo(C[0]+Math.cos(a)*R*1.45,C[1]+Math.sin(a)*R*1.45); ctx.stroke(); ctx.fillStyle=`rgba(${col},.85)`; ctx.beginPath(); ctx.arc(C[0]+Math.cos(a)*R*1.5,C[1]+Math.sin(a)*R*1.5,m*.025,0,7); ctx.fill(); }
+    ctx.fillStyle=`rgba(${col},.15)`; ctx.beginPath(); ctx.arc(C[0],C[1],R,0,7); ctx.fill(); ctx.strokeStyle=`rgba(${col},.9)`; ctx.beginPath(); ctx.arc(C[0],C[1],R,0,7); ctx.stroke(); }
+  if(kind==='leaf'){ const s=m/300; ctx.save(); ctx.translate(C[0]-150*s*1.3,C[1]-140*s); ctx.scale(s*1.3,s); ctx.strokeStyle=`rgba(${col},.85)`; ctx.lineWidth=3; ctx.fillStyle=`rgba(${col},.18)`;
+    ctx.beginPath(); ctx.moveTo(20,270); ctx.bezierCurveTo(20,90,130,10,280,10); ctx.bezierCurveTo(280,160,170,270,20,270); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(20,270); ctx.quadraticCurveTo(140,160,240,60); ctx.stroke(); ctx.restore(); }
+  if(kind==='dna'){ const n=26; for(let i=0;i<n;i++){ const x=W*.08+i*(W*.84/(n-1)), ph=i*.5, y1=C[1]+Math.sin(ph)*H*.28, y2=C[1]-Math.sin(ph)*H*.28; ctx.strokeStyle=`rgba(${col},.35)`; ctx.beginPath(); ctx.moveTo(x,y1); ctx.lineTo(x,y2); ctx.stroke();
+      ctx.fillStyle=`rgba(${col},${.5+.5*Math.cos(ph)*.5+.25})`; ctx.beginPath(); ctx.arc(x,y1,m*.025,0,7); ctx.fill(); ctx.fillStyle=`rgba(191,144,0,${.6})`; ctx.beginPath(); ctx.arc(x,y2,m*.025,0,7); ctx.fill(); } }
+}
+function paintThumb(cv, p){
+  const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio||1,2), W = Math.max(1,r.width), H = Math.max(1,r.height);
+  cv.width = W*d; cv.height = H*d; const x = cv.getContext('2d'); x.setTransform(d,0,0,d,0,0);
+  const a = AREA[p.area], g = x.createLinearGradient(0,0,W,H); g.addColorStop(0,a.bg[0]); g.addColorStop(1,a.bg[1]); x.fillStyle=g; x.fillRect(0,0,W,H);
+  const t = THUMB[p.id];
+  if(t.mol) drawMol(x, W, H, MOLS[t.mol], -.4, p.year*.7, Math.min(.62, .62*W/H/1.6));
+  else art(x, W, H, t.art, p.area==='cancer' ? '214,82,46' : '112,72,214');
+}
+$$('canvas[data-art]').forEach(cv => { const x = cv.getContext('2d'); const k = cv.dataset.art; const col = {cancer:'214,82,46', virus:'112,72,214', leaf:'11,122,94'}[k]; art(x, cv.width, cv.height, k, col); });
+
+/* ---------- header / drawer / search ---------- */
+const drawer = $('#drawer'), burger = $('#burger');
+burger.onclick = () => { drawer.hidden = false; burger.setAttribute('aria-expanded','true'); };
+drawer.addEventListener('click', e => { if(e.target === drawer || e.target.closest('a')){ drawer.hidden = true; burger.setAttribute('aria-expanded','false'); } });
+
+/* ---------- publication cards (tabs) ---------- */
+const TABS = [["all","All"],["cancer","Cancer"],["infect","Infectious disease"],["2026","Published in 2026"]];
+const INTRO = {
+  all:["Every Bioinventics paper","Six peer-reviewed studies from 2023 to 2026, published by Springer Nature, Wiley, Taylor & Francis and Frontiers."],
+  cancer:["Cancer drug discovery","Inhibitors for melanoma (AKT1), breast cancer (EGFR, LOXL2) and acute myeloid leukemia (FLT3)."],
+  infect:["Infectious disease","Antiviral peptides against dengue and a plant extract that boosts azithromycin against resistant bacteria."],
+  "2026":["Latest research","Our newest studies combine network pharmacology, 100 ns dynamics and DFT on natural compounds."]
+};
+function card(p){ const a = AREA[p.area];
+  return `<button class="ccard" data-open="${p.id}"><div class="thumb"><canvas data-thumb="${p.id}"></canvas><span class="pub">${SHORT[p.pub]||p.pub}</span></div>
+    <h3>${esc(p.title)}</h3><div class="who">${esc(p.authors)}</div><div class="jr">${esc(p.journal)}</div>
+    <div class="key">${KEY[p.id]}</div><div class="meta">${p.year===2026?'<span class="badge">New</span>':''}<span class="badge ${a.b}">${esc(p.tag)}</span><span class="badge t">${p.year}</span></div></button>`; }
+function paintAll(){ $$('canvas[data-thumb]').forEach(cv => paintThumb(cv, PUBS.find(p => p.id === cv.dataset.thumb))); }
+$('#pubTabs').innerHTML = TABS.map(([k,l],i) => `<button class="tab" role="tab" aria-selected="${i===0}" data-k="${k}">${l}</button>`).join('');
+function showTab(k){
+  $$('#pubTabs .tab').forEach(t => t.setAttribute('aria-selected', t.dataset.k === k));
+  const list = PUBS.filter(p => k==='all' || p.area===k || String(p.year)===k);
+  $('#tabIntro').innerHTML = `<div><h3>${INTRO[k][0]}</h3><p>${INTRO[k][1]}</p></div><a class="btn ghost" href="#publications">Browse all publications</a>`;
+  $('#cards').innerHTML = list.slice(0,8).map(card).join(''); paintAll();
+}
+$('#pubTabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if(t) showTab(t.dataset.k); });
+showTab('all');
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(paintAll, 150); });
+
+/* ---------- services ---------- */
+const BG = {"var(--gold)":"var(--gold-bg)","var(--green)":"var(--green-bg)","var(--cyan)":"var(--teal-bg)","var(--purple)":"var(--lav)","var(--red)":"var(--red-bg)","var(--leaf)":"var(--green-bg)"};
+const FG = {"var(--cyan)":"var(--teal)","var(--leaf)":"var(--green)","var(--gold)":"var(--gold-ink)"};
+$('#svc').innerHTML = SERVICES.map(([ic,t,p,tl,c]) => `<article class="cat" style="--c:${FG[c]||c};--c-bg:${BG[c]}"><div class="art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ICON[ic]}</svg></div><div class="bd"><h3>${t}</h3><p>${p}</p><div class="tl">${tl}</div></div></article>`).join('');
+$('#svcpick').innerHTML = SERVICES.map(([ic,t],i) => `<label for="sv${i}"><input type="checkbox" id="sv${i}" value="${t}"><span>${t}</span></label>`).join('');
+
+/* ---------- workflow ---------- */
+$('#steps').innerHTML = STEPS.map((s,i) => `<button class="step" role="tab" id="st${i}" aria-selected="${i===0}" data-i="${i}"><span class="n">${i+1}</span><span><b>${s.t}</b><small>${s.s}</small></span></button>`).join('');
+function showStep(i){ const s = STEPS[i], p = PUBS.find(x => x.id === s.ref);
+  $$('.step').forEach((b,j) => b.setAttribute('aria-selected', j===i));
+  $('#flowPanel').innerHTML = `<div class="bgnum">${i+1}</div><span class="k">STEP ${i+1} OF 6</span><h3>${s.t}</h3><p>${s.p}</p><div class="tools">${s.tools.map(t=>`<span>${t}</span>`).join('')}</div><div class="bar"><i style="width:${(i+1)/STEPS.length*100}%"></i></div><div class="ex"><span class="v">${s.v}</span><span class="d">${s.d}</span><a data-open="${p.id}">${p.journal}, ${p.year}</a></div>`; }
+$('#steps').addEventListener('click', e => { const b = e.target.closest('.step'); if(b) showStep(+b.dataset.i); });
+$('#steps').addEventListener('keydown', e => { if(!['ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key)) return; e.preventDefault(); const cur = $$('.step').findIndex(b => b.getAttribute('aria-selected')==='true'); const n = (cur + (e.key==='ArrowDown'||e.key==='ArrowRight'?1:-1) + STEPS.length) % STEPS.length; showStep(n); $('#st'+n).focus(); });
+showStep(0);
+
+/* ---------- molecule lab ---------- */
+const lab = MolView($('#labMol'), {speed:.004, scale:.36});
+$('#molTabs').innerHTML = Object.keys(MOLINFO).map((n,i) => `<button class="mtab" role="tab" aria-selected="${i===0}" data-m="${n}">${MOLINFO[n].name}</button>`).join('');
+function showMol(n){ const m = MOLINFO[n], p = PUBS.find(x => x.id === m.ref); lab.set(n);
+  $$('#molTabs .mtab').forEach(t => t.setAttribute('aria-selected', t.dataset.m === n));
+  $('#molInfo').innerHTML = `<span class="k">${m.kind}</span><h3>${m.name} <em>→ ${m.target}</em></h3><p>${m.text}</p><div class="metrics">${m.m.map(([v,l]) => `<div><b>${v}</b><span>${l}</span></div>`).join('')}</div><p class="src">Disease: <b style="color:var(--ink)">${m.disease}</b> · Source: <a data-open="${p.id}">${p.journal}, ${p.year}</a></p>`; }
+$('#molTabs').addEventListener('click', e => { const t = e.target.closest('.mtab'); if(t) showMol(t.dataset.m); });
+showMol('arbutin'); lab.start();
+
+/* ---------- publications page (filters) ---------- */
+const F = {area:new Set(), year:new Set(), pub:new Set(), q:""};
+function facet(id, key, values, label){
+  $('#'+id).innerHTML = values.map(v => `<label><input type="checkbox" data-f="${key}" value="${v}"> ${label(v)} <span class="ct">${PUBS.filter(p => String(key==='area'?p.area:key==='year'?p.year:p.pub)===String(v)).length}</span></label>`).join('');
+}
+facet('fArea','area',['cancer','infect'], v => AREA[v].label);
+facet('fYear','year',[...new Set(PUBS.map(p => p.year))], v => v);
+facet('fPub','pub',[...new Set(PUBS.map(p => p.pub))], v => SHORT[v]||v);
+$('.side').addEventListener('change', e => { const i = e.target; if(!i.dataset.f) return; i.checked ? F[i.dataset.f].add(i.value) : F[i.dataset.f].delete(i.value); renderResults(); });
+$('#q').addEventListener('input', e => { F.q = e.target.value.trim(); renderResults(); });
+$('#clearF').onclick = () => { F.area.clear(); F.year.clear(); F.pub.clear(); F.q = ""; $('#q').value = ""; $$('.side input').forEach(i => i.checked = false); renderResults(); };
+function renderResults(){
+  const q = F.q.toLowerCase();
+  const rows = PUBS.filter(p => (!F.area.size || F.area.has(p.area)) && (!F.year.size || F.year.has(String(p.year))) && (!F.pub.size || F.pub.has(p.pub)) && (!q || (p.title+p.abs+p.journal+p.authors).toLowerCase().includes(q)));
+  $('#rcount').textContent = `${rows.length} result${rows.length===1?'':'s'}${F.q ? ` for “${F.q}”` : ''}`;
+  $('#rlist').innerHTML = rows.map(p => { const a = AREA[p.area]; return `<li class="rrow" data-open="${p.id}" tabindex="0" role="button" aria-label="Read abstract: ${esc(p.title)}"><div class="thumb"><canvas data-thumb="${p.id}"></canvas><span class="pub">${SHORT[p.pub]||p.pub}</span></div><div><h2>${esc(p.title)}</h2><p class="snip">${esc(p.abs.replace(/\n/g,' '))}</p><div class="who">${esc(p.authors)}</div><div class="jr">${esc(p.journal)}</div><div class="meta">${p.year===2026?'<span class="badge">New</span>':''}<span class="badge ${a.b}">${esc(p.tag)}</span><span class="badge t">${KEY[p.id]}</span></div></div><div class="yr">${p.year}</div></li>`; }).join('');
+  $('#empty').hidden = rows.length > 0;
+  requestAnimationFrame(paintAll);
+}
+renderResults();
+$('#rlist').addEventListener('keydown', e => { const r = e.target.closest('.rrow'); if(r && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openPub(r.dataset.open); } });
+
+/* ---------- reader window ---------- */
+const reader = $('#reader'); let cur = 0, lastFocus = null;
+function openPub(id){ cur = PUBS.findIndex(p => p.id === id); if(cur < 0) return; lastFocus = document.activeElement; fill(); reader.hidden = false; document.body.style.overflow = 'hidden'; $('#reader .x').focus(); }
+function fill(){ const p = PUBS[cur], a = AREA[p.area];
+  $('#r-addr').textContent = 'doi.org/' + p.doi;
+  const abs = esc(p.abs).split('\n').map(l => l.replace(/^(Background|Methods|Results|Conclusion):\s*/, '<strong>$1</strong>')).join(' ');
+  $('#r-body').innerHTML = `<div class="meta"><span class="badge ${a.b}">${esc(p.tag)}</span>${p.year===2026?'<span class="badge">New</span>':''}<span class="yr">${p.year} · ${esc(p.pub)}</span></div><h2 id="r-title">${esc(p.title)}</h2><div class="j">${esc(p.journal)}, ${p.vol}</div><div class="au">${esc(p.authors)}</div><div class="ab-l">Abstract</div><p class="ab">${abs}</p>`;
+  $('#r-body').scrollTop = 0; $('#r-doi').href = 'https://doi.org/' + p.doi; $('#r-cite').textContent = 'Copy citation'; }
+function closePub(){ reader.hidden = true; document.body.style.overflow = ''; if(lastFocus) lastFocus.focus(); }
+document.addEventListener('click', e => { const o = e.target.closest('[data-open]'); if(o){ e.preventDefault(); openPub(o.dataset.open); } if(e.target.closest('[data-close]')) closePub(); });
+$('#r-prev').onclick = () => { cur = (cur - 1 + PUBS.length) % PUBS.length; fill(); };
+$('#r-next').onclick = () => { cur = (cur + 1) % PUBS.length; fill(); };
+document.addEventListener('keydown', e => { if(reader.hidden) return; if(e.key==='Escape') closePub(); if(e.key==='ArrowRight') $('#r-next').click(); if(e.key==='ArrowLeft') $('#r-prev').click();
+  if(e.key==='Tab'){ const f = [...reader.querySelectorAll('button,a[href]')].filter(el => el.offsetParent); const first=f[0], last=f[f.length-1]; if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); } else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); } } });
+function copy(text, btn, ok){ try { navigator.clipboard.writeText(text).then(() => { const t = btn.textContent; btn.textContent = ok; setTimeout(() => btn.textContent = t, 1600); }, () => btn.textContent = 'Select and copy manually'); } catch(_) { btn.textContent = 'Select and copy manually'; } }
+$('#r-cite').onclick = e => { const p = PUBS[cur]; copy(`${p.authors}. ${p.title}. ${p.journal}. ${p.vol}. https://doi.org/${p.doi}`, e.currentTarget, 'Citation copied'); };
+$('#copyEmail').onclick = e => copy('bioinventics@gmail.com', e.currentTarget, 'Copied');
+
+/* ---------- inquiry ---------- */
+$('#inq').addEventListener('submit', e => { e.preventDefault(); const out = $('#q-out'); const name = $('#q-name').value.trim(), mail = $('#q-mail').value.trim();
+  if(!name || !/.+@.+\..+/.test(mail)){ out.className='out show'; out.style.background='var(--red-bg)'; out.textContent='Please add your name and a valid email address so we can reply.'; (!name?$('#q-name'):$('#q-mail')).focus(); return; }
+  const svcs = $$('#svcpick input:checked').map(i => i.value);
+  const msg = `Subject: Project inquiry – ${svcs[0]||'In silico study'}\n\nName: ${name}\nInstitution: ${$('#q-org').value.trim()||'-'}\nEmail: ${mail}\nServices: ${svcs.join(', ')||'Not sure yet'}\n\n${$('#q-msg').value.trim()}`;
+  out.className='out show'; out.style.background=''; out.innerHTML = '<b>Message ready.</b> Paste it into a new email to <b>bioinventics@gmail.com</b>.<pre style="white-space:pre-wrap;font-family:var(--mono);font-size:12px;margin:10px 0 0">'+esc(msg)+'</pre>';
+  try { navigator.clipboard.writeText(msg).then(() => { $('#q-send').textContent='Copied to clipboard ✓'; setTimeout(() => $('#q-send').textContent='Prepare my message', 2200); }, () => {}); } catch(_) {} });
+
+/* ---------- founder photo + team ---------- */
+// Photo hosted on the founder's Google Site. If it can't load, the "RI" badge stays.
+const FOUNDER_PHOTO = "https://sites.google.com/sitesv-images-rt/AMxu72sAoZyTL7sxmhNeRjayuJcR11ssPcqwsKwxTA6DuKvJdyEKKxVUCzzLjBV1Sd-xZK7FSGREFann7apP5sizD0_RS-wzb5ZB8va4zqJ7OO3GJljpt97v9yoHp5Tnq5np6k_16LGUQmu1Dq_1xU5n0VDkWsFS7D4Rm_bpkaOGbKtDmtn1r7eY9GEcCUx28S5A9bhl1J38-yc48Fi30RyXWwLcW5O-O9IBw-Tp4d3rD1Q=w800";
+function addPhoto(el, src, alt){ if(!src || !el) return; const img = new Image(); img.alt = alt; img.referrerPolicy = 'no-referrer'; img.onload = () => el.appendChild(img); img.src = src; }
+$$('[data-photo]').forEach(el => addPhoto(el, FOUNDER_PHOTO, 'Md Rashedul Islam, Founder and CEO of Bioinventics'));
+/* To add a member: fill in name, and optionally photo (an image URL) and bio. Leave name empty to show an open position. */
+const TEAM = [
+ {name:"Md Rashedul Islam", role:"Founder & CEO", photo:FOUNDER_PHOTO, bio:"Leads research strategy, drug-design projects and collaborations.", c:"#0B6E5B"},
+ {name:"", role:"Senior Researcher", bio:"Designs and supervises docking, dynamics and DFT studies.", c:"#2E9E6B"},
+ {name:"", role:"Researcher & Web Developer", bio:"Runs simulations and maintains the Bioinventics website and tools.", c:"#0E7C86"},
+ {name:"", role:"Advisor & Trainer", bio:"Guides projects and trains students in computational drug discovery.", c:"#C99212"},
+ {name:"", role:"Events Executive", bio:"Organises workshops, seminars and training events.", c:"#C4302B"}
+];
+const PERSON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>';
+$('#teamGrid').innerHTML = TEAM.map((m,i) => { const ini = m.name ? m.name.split(' ').filter(w => /^[A-Z]/.test(w)).slice(-2).map(w => w[0]).join('') : '';
+  return `<article class="member${m.name?'':' open'}" style="--c:${m.c}"><div class="ph" id="tm${i}">${m.name?ini:PERSON}</div><div style="min-width:0"><h3>${m.name?esc(m.name):'Position open'}</h3><div class="r">${esc(m.role)}</div><p>${esc(m.bio)}</p></div></article>`; }).join('')
+  + `<article class="member join"><div><h3>Join our team</h3><p style="margin-top:6px">Students and researchers interested in computational drug discovery are welcome to get in touch.</p></div><a class="btn dark sm" href="#contact" style="margin-top:14px;align-self:flex-start">Apply now</a></article>`;
+TEAM.forEach((m,i) => m.name && addPhoto($('#tm'+i), m.photo, m.name));
+
+/* ---------- router: separate pages ---------- */
+const PAGES = ['home','about','services','research','publications','team','founder','contact'];
+const ALIAS = {top:'home', lab:'research', workflow:'services', featured:'home'};
+function route(){
+  let h = location.hash.slice(1) || 'home'; const anchor = ALIAS[h] ? h : null; if(ALIAS[h]) h = ALIAS[h];
+  if(!PAGES.includes(h)) h = 'home';
+  PAGES.forEach(p => $('#view-'+p).hidden = p !== h);
+  $$('.hnav a, .drawer a').forEach(a => a.classList.toggle('on', a.dataset.p === h));
+  dispatchEvent(new Event('resize'));
+  requestAnimationFrame(paintAll);
+  const el = anchor && anchor !== 'top' && anchor !== h ? document.getElementById(anchor) : null;
+  if(el) requestAnimationFrame(() => el.scrollIntoView({behavior:'auto'})); else scrollTo(0,0);
+}
+addEventListener('hashchange', route);
+document.addEventListener('click', e => { const a = e.target.closest('a[href^="#"]'); if(a && a.getAttribute('href') === location.hash){ e.preventDefault(); route(); } });
+route();
+
+</script>
+
+</body>
+</html>
