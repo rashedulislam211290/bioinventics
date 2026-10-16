@@ -309,6 +309,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .chan .ic svg{width:22px;height:22px}
 .chan b{color:var(--ink)}
 .chan span{font-size:14px;color:var(--dim);word-break:break-word;user-select:all}
+.chan .plinks{display:flex;flex-direction:column;gap:6px;user-select:auto}
+.chan .plinks a{font-weight:700;color:var(--em);text-decoration:none;font-size:14px}
+.chan .plinks a:hover{text-decoration:underline}
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start}
 .contact > *{min-width:0}
 .cinfo{display:grid;gap:10px;margin-top:20px}
@@ -360,7 +363,7 @@ form.inq input:focus,form.inq textarea:focus{outline:none;border-color:var(--em)
 .rrow .who{font-size:12.5px;color:var(--faint);margin-top:8px}
 .rrow .jr{font-size:14px;font-weight:700;color:var(--em);margin-top:4px}
 .rrow .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.rrow .yr{font-size:15px;font-weight:800;color:#2A1E00;background:var(--gold-l);padding:4px 12px;border-radius:999px;align-self:start;margin:6px 6px 0 0}
+.rrow .yr{white-space:nowrap;font-size:15px;font-weight:800;color:#2A1E00;background:var(--gold-l);padding:4px 12px;border-radius:999px;align-self:start;margin:6px 6px 0 0}
 .empty{padding:48px 0;text-align:center;color:var(--dim)}
 
 /* ===== reader window ===== */
@@ -718,13 +721,14 @@ footer{background:var(--em-x);color:#fff}
         <p class="ceo-sub">Pharmacist · Computational chemist · Natural-product drug discovery</p>
         <p class="lead" style="margin-top:22px">Md Rashedul Islam works on natural product-based drug discovery in the biochemistry lab at King Abdulaziz University, Jeddah, Saudi Arabia. Trained in pharmacy in Bangladesh and in physical chemistry in Saudi Arabia, he combines molecular simulation, quantum chemistry and machine learning with hands-on phytochemistry. He founded Bioinventics to make this computational pipeline available to researchers studying bioactive natural compounds.</p>
         <div class="ceo-facts">
-          <div><b>6+</b><span>papers with Bioinventics</span></div>
+          <div><b>9</b><span>peer-reviewed papers</span></div>
           <div><b>3</b><span>degrees in pharmacy &amp; chemistry</span></div>
           <div><b>Oxford</b><span>AI in drug discovery programme</span></div>
         </div>
         <div class="cta" style="margin-top:30px">
-          <a class="btn gold" href="#publications">See his publications</a>
-          <a class="btn" href="#contact">Contact</a>
+          <a class="btn gold" href="#founder-pubs">See his publications</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=xlEA5NYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+          <a class="btn" href="https://orcid.org/0000-0002-8248-0188" target="_blank" rel="noopener">ORCID ↗</a>
         </div>
       </div>
     </div>
@@ -791,14 +795,10 @@ footer{background:var(--em-x);color:#fff}
       </section>
     </div>
 
-    <section class="cv-block">
-      <h2 class="cv-h">Other publications</h2>
-      <ul class="list">
-        <li><b>Bioactive compounds from <i>Catharanthus roseus</i> and <i>Avicennia marina</i> against colorectal cancer</b><span>Molecules, 2022, 27(7):2089</span></li>
-        <li><b>Errors and medication patterns in handwritten prescriptions in Bangladesh</b><span>Journal of Applied Pharmaceutical Science, 2016</span></li>
-        <li><b>Antibacterial, cytotoxic and insecticidal activity of <i>Hibiscus sabdariffa</i> bark</b><span>IJPRR, 2015</span></li>
-      </ul>
-      <p style="margin-top:18px"><a class="btn" href="#publications">Bioinventics publications with abstracts →</a></p>
+    <section class="cv-block" id="founder-pubs">
+      <h2 class="cv-h">Publications</h2>
+      <p style="color:var(--dim);margin:-6px 0 18px">All peer-reviewed papers by Md Rashedul Islam, newest first. Open any paper to read its abstract.</p>
+      <ol class="rlist" id="fpubs"></ol>
     </section>
 
     <section class="cv-block ceo-contact">
@@ -806,6 +806,7 @@ footer{background:var(--em-x);color:#fff}
       <div class="cinfo" style="margin:0">
         <div><span class="lb">Personal</span><span class="v">rashed.pharm.jnu@gmail.com</span></div>
         <div><span class="lb">Company</span><span class="v">bioinventics@gmail.com</span></div>
+        <div><span class="lb">Profiles</span><span class="v" style="user-select:auto"><a href="https://scholar.google.com/citations?user=xlEA5NYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://orcid.org/0000-0002-8248-0188" target="_blank" rel="noopener">ORCID</a> · <a href="https://sites.google.com/view/mdrashedulislam" target="_blank" rel="noopener">Website</a></span></div>
       </div>
     </section>
   </div>
@@ -821,7 +822,8 @@ footer{background:var(--em-x);color:#fff}
         <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><b>Company email</b><span>bioinventics@gmail.com</span></div>
         <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><b>Founder</b><span>rashed.pharm.jnu@gmail.com</span></div>
         <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><b>Location</b><span>Rajshahi 6204, Bangladesh</span></div>
-        <a href="https://sites.google.com/view/mdrashedulislam/research-center" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><b>Founder’s website ↗</b><span>sites.google.com/view/mdrashedulislam</span></a>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><b>Founder’s profiles</b>
+          <span class="plinks"><a href="https://sites.google.com/view/mdrashedulislam/research-center" target="_blank" rel="noopener">Google Sites ↗</a><a href="https://scholar.google.com/citations?user=xlEA5NYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a><a href="https://orcid.org/0000-0002-8248-0188" target="_blank" rel="noopener">ORCID ↗</a></span></div>
       </div>
       <div class="contact">
         <div>
@@ -865,7 +867,7 @@ footer{background:var(--em-x);color:#fff}
     <div class="fbrand"><img src="logo.png" alt="Bioinventics logo"><div><b>Bioinventics</b><p>Advanced Biological Invention Centre. In silico drug discovery for cancer and infectious disease.</p></div></div>
     <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#team">Team</a></li><li><a href="#founder">Founder &amp; CEO</a></li><li><a href="#contact">Contact</a></li></ul></div>
     <div><h4>Research</h4><ul><li><a href="#services">Services</a></li><li><a href="#workflow">Workflow</a></li><li><a href="#lab">Molecule Lab</a></li><li><a href="#publications">Publications</a></li></ul></div>
-    <div><h4>Contact Info</h4><ul><li><a href="#contact">bioinventics@gmail.com</a></li><li><a href="#contact">rashed.pharm.jnu@gmail.com</a></li><li><a href="#contact">Rajshahi 6204, Bangladesh</a></li></ul></div>
+    <div><h4>Contact Info</h4><ul><li><a href="#contact">bioinventics@gmail.com</a></li><li><a href="#contact">rashed.pharm.jnu@gmail.com</a></li><li><a href="https://scholar.google.com/citations?user=xlEA5NYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a></li><li><a href="https://orcid.org/0000-0002-8248-0188" target="_blank" rel="noopener">ORCID ↗</a></li><li><a href="#contact">Rajshahi 6204, Bangladesh</a></li></ul></div>
   </div>
   <div class="wrap fbase"><span>© 2026 Bioinventics · Advanced Biological Invention Centre</span><i>Computer is your lab, now execute experiments</i></div>
   <div class="checker" aria-hidden="true"></div>
@@ -947,11 +949,31 @@ const MOLINFO = {
 
 
 
+
+/* Founder's earlier papers (shown on the Founder page only) */
+const EXTRA = [
+ {id:"crc", year:2022, area:"cancer", tag:"Colorectal cancer", founder:true,
+  title:"Computational Identification of Druggable Bioactive Compounds from Catharanthus roseus and Avicennia marina against Colorectal Cancer by Targeting Thymidylate Synthase",
+  journal:"Molecules", pub:"MDPI", vol:"2022; 27(7):2089", doi:"10.3390/molecules27072089",
+  authors:"Islam MR, Awal MA, Khames A, Abourehab MAS, Samad A, Hassan WMI, Alam R, Osman OI, Nur SM, Molla MHR, Abdulrahman AO, Rajia S, Ahammad F, Hasan MN, Qadri I, Kim B",
+  abs:"Colorectal cancer (CRC) is the second most common cause of death worldwide, affecting approximately 1.9 million individuals in 2020. Therapeutics of the disease are not yet available and discovering a novel anticancer drug candidate against the disease is an urgent need. Thymidylate synthase (TS) is an important enzyme and prime precursor for DNA biosynthesis that catalyzes the methylation of deoxyuridine monophosphate (dUMP) to deoxythymidine monophosphate (dTMP) that has emerged as a novel drug target against the disease. Elevated expression of TS in proliferating cells promotes oncogenesis as well as CRC. Therefore, this study aimed to identify potential natural anticancer agents that can inhibit the activity of the TS protein, subsequently blocking the progression of colorectal cancer. Initially, molecular docking was implied on 63 natural compounds identified from Catharanthus roseus and Avicennia marina to evaluate their binding affinity to the desired protein. Subsequently, molecular dynamics (MD) simulation, ADME (Absorption, Distribution, Metabolism, and Excretion), toxicity, and quantum chemical-based DFT (density-functional theory) approaches were applied to evaluate the efficacy of the selected compounds. Molecular docking analysis initially identified four compounds (PubChem CID: 5281349, CID: 102004710, CID: 11969465, CID: 198912) that have better binding affinity to the target protein. The ADME and toxicity properties indicated good pharmacokinetics (PK) and toxicity ability of the selected compounds. Additionally, the quantum chemical calculation of the selected molecules found low chemical reactivity indicating the bioactivity of the drug candidate. The global descriptor and HOMO-LUMO energy gap values indicated a satisfactory and remarkable profile of the selected molecules. Furthermore, MD simulations of the compounds identified better binding stability of the compounds to the desired protein. To sum up, the phytoconstituents from two plants showed better anticancer activity against TS protein that can be further developed as an anti-CRC drug."},
+ {id:"rx", year:2016, area:"other", tag:"Pharmacy practice", founder:true,
+  title:"Errors, omissions and medication patterns of handwritten outpatient prescriptions in Bangladesh: a cross-sectional health survey",
+  journal:"Journal of Applied Pharmaceutical Science", pub:"JAPS", vol:"2016; 6(06):042–046", doi:"10.7324/JAPS.2016.60608",
+  authors:"Haque MU, Barik SMA, Bashar S, Islam R, Bashar S, Kumar A, Dipon AH, Kona N, Chouduri AU",
+  abs:"Handwritten prescription errors are worldwide common problem. We investigated the types and extent of prescription errors in three cities of Bangladesh. Total 900 outpatient prescriptions were surveyed following the guidelines of WHO and BNF. Prescription errors in superscription, inscription and subscription were analyzed by Microsoft Excel 2010. About 73% patients visited MBBS and 8% BDS doctors. The male outpatients (55%) were slightly higher than female (45%). Commonly found errors of prescription were in superscription part, i.e. gender (64.33%), age (17.67%) and name (5%) of the patients. In inscription part, most common error was the direction for drug use (42%) followed by the dosage regimens (28%), doses (26%), and dosage forms (12.67%) of the drug. In subscription part, illegible handwriting was most common (46%) followed by the prescribers sign (10.67%) and date (4%). In a single prescription, averagely 3 and maximally 8 drugs were found to be prescribed. Most frequently prescribed drugs were antibiotics (18.25%) followed by antacids (17.45%) and NSAIDs (13.60%). Errors in handwritten prescriptions are the primary causes of treatment failure in Bangladesh. More professional care by the prescribers’ and the inclusion of pharmacists in hospital can only reduce the errors and assure safer health."},
+ {id:"hibiscus", year:2015, area:"other", tag:"Natural products", founder:true,
+  title:"Evaluation of the Antibacterial, Cytotoxic and Insecticidal Activities of Hibiscus sabdariffa Barks",
+  journal:"International Journal of Pharmacy Review & Research", pub:"IJPRR", vol:"2015; 5(3):170–175", doi:"", url:"http://www.ijprr.com",
+  authors:"Khatun MH, Nesa ML, Hosen AI, Bashar S, Sarker S, Islam MR",
+  abs:"The present study was designed to investigate the antibacterial, cytotoxic and insecticidal activities of the methanol (85%) extract of barks of Hibiscus sabdariffa (MEHS). Antibacterial tests were done against six Gram-positive and eight Gram-negative bacteria using disc diffusion method. The extract showed the highest activity against Escherichia coli (14 ± 0.21 mm) followed by Shigella dysenteriae (13 ± 0.09), Sarcina lutea (13 ± 0.13 mm), Shigella boydii (12 ± 0.12 mm) and Staphylococcus aureus (12 ± 0.12 mm) whereas inactive against Bacillus subtilis, B. megaterium, B. anthracis and B. cereus. The cytotoxic activities of crude extract was determined using Brine Shrimp lethality Bioassay and LC50 values of standard Vincristine sulphate as a positive control and the crude extract were found to be 0.21 ± 0.19 µg/ml and 9.605 ± 0.21 µg/ml respectively. In insecticidal study, MEHS showed the significant activity with 100% mortality rate of Tribolium castaneum at a dose of 50 mg/ml with 12 hours and also showed the activity in a dose dependent manner."}
+];
+const ALLPUBS = PUBS.concat(EXTRA).sort((a,b) => b.year - a.year);
 /* light-theme colours for the shared data */
-const AREA = {cancer:{c:"var(--red)", b:"r", label:"Cancer", bg:["#FFF1EC","#FBD9CC"]}, infect:{c:"var(--purple)", b:"p", label:"Infectious disease", bg:["#F1ECFC","#DDD2F7"]}};
-const SHORT = {"Springer Nature":"Springer Nature","Wiley-VCH":"Wiley","Frontiers":"Frontiers","Taylor & Francis":"Taylor & Francis"};
-const KEY = {arbutin:"AKT1 · −7.9 kcal/mol", zingerone:"EGFR · −6.4 kcal/mol", pandanus:"MIC 3.67 mg/mL", loxl2:"H.2.9 · −8.4 kcal/mol", dengue:"10 lead peptides", flt3:"21.7M screened"};
-const THUMB = {arbutin:{mol:"arbutin"}, zingerone:{mol:"zingerone"}, pandanus:{mol:"thiamine"}, loxl2:{art:"cancer"}, dengue:{art:"virus"}, flt3:{art:"dna"}};
+const AREA = {cancer:{c:"var(--red)", b:"r", label:"Cancer", bg:["#FFF1EC","#FBD9CC"]}, infect:{c:"var(--purple)", b:"p", label:"Infectious disease", bg:["#F1ECFC","#DDD2F7"]}, other:{c:"var(--green)", b:"g", label:"Pharmacy & natural products", bg:["#E8F6EE","#CDEBDB"]}};
+const SHORT = {"MDPI":"MDPI","JAPS":"JAPS","IJPRR":"IJPRR","Springer Nature":"Springer Nature","Wiley-VCH":"Wiley","Frontiers":"Frontiers","Taylor & Francis":"Taylor & Francis"};
+const KEY = {arbutin:"AKT1 · −7.9 kcal/mol", zingerone:"EGFR · −6.4 kcal/mol", pandanus:"MIC 3.67 mg/mL", loxl2:"H.2.9 · −8.4 kcal/mol", dengue:"10 lead peptides", flt3:"21.7M screened", crc:"4 TS inhibitor hits", rx:"900 prescriptions", hibiscus:"LC50 9.6 µg/ml"};
+const THUMB = {arbutin:{mol:"arbutin"}, zingerone:{mol:"zingerone"}, pandanus:{mol:"thiamine"}, loxl2:{art:"cancer"}, dengue:{art:"virus"}, flt3:{art:"dna"}, crc:{art:"cancer"}, rx:{art:"rx"}, hibiscus:{art:"leaf"}};
 
 /* ---------- molecule renderer (light) ---------- */
 const COL = {C:"#3D434B",O:"#E0393E",N:"#3B6FE0",S:"#D4A20F"}, RAD = {C:.62,O:.6,N:.6,S:.78};
@@ -1004,6 +1026,9 @@ function art(ctx, W, H, kind, col){
   if(kind==='leaf'){ const s=m/300; ctx.save(); ctx.translate(C[0]-150*s*1.3,C[1]-140*s); ctx.scale(s*1.3,s); ctx.strokeStyle=`rgba(${col},.85)`; ctx.lineWidth=3; ctx.fillStyle=`rgba(${col},.18)`;
     ctx.beginPath(); ctx.moveTo(20,270); ctx.bezierCurveTo(20,90,130,10,280,10); ctx.bezierCurveTo(280,160,170,270,20,270); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(20,270); ctx.quadraticCurveTo(140,160,240,60); ctx.stroke(); ctx.restore(); }
+  if(kind==='rx'){ const w=m*.62, h=m*.78, x0=C[0]-w/2, y0=C[1]-h/2; ctx.fillStyle='rgba(255,255,255,.9)'; ctx.strokeStyle=`rgba(${col},.8)`; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x0,y0,w,h,m*.04) : ctx.rect(x0,y0,w,h); ctx.fill(); ctx.stroke();
+    ctx.fillStyle=`rgba(${col},.95)`; ctx.font=`700 ${m*.16}px Georgia,serif`; ctx.fillText('Rx', x0+w*.12, y0+h*.3);
+    for(let i=0;i<4;i++){ ctx.strokeStyle=`rgba(${col},.45)`; ctx.beginPath(); ctx.moveTo(x0+w*.12, y0+h*(.45+i*.13)); ctx.lineTo(x0+w*(i===3?.55:.88), y0+h*(.45+i*.13)); ctx.stroke(); } }
   if(kind==='dna'){ const n=26; for(let i=0;i<n;i++){ const x=W*.08+i*(W*.84/(n-1)), ph=i*.5, y1=C[1]+Math.sin(ph)*H*.28, y2=C[1]-Math.sin(ph)*H*.28; ctx.strokeStyle=`rgba(${col},.35)`; ctx.beginPath(); ctx.moveTo(x,y1); ctx.lineTo(x,y2); ctx.stroke();
       ctx.fillStyle=`rgba(${col},${.5+.5*Math.cos(ph)*.5+.25})`; ctx.beginPath(); ctx.arc(x,y1,m*.025,0,7); ctx.fill(); ctx.fillStyle=`rgba(191,144,0,${.6})`; ctx.beginPath(); ctx.arc(x,y2,m*.025,0,7); ctx.fill(); } }
 }
@@ -1013,7 +1038,7 @@ function paintThumb(cv, p){
   const a = AREA[p.area], g = x.createLinearGradient(0,0,W,H); g.addColorStop(0,a.bg[0]); g.addColorStop(1,a.bg[1]); x.fillStyle=g; x.fillRect(0,0,W,H);
   const t = THUMB[p.id];
   if(t.mol) drawMol(x, W, H, MOLS[t.mol], -.4, p.year*.7, Math.min(.62, .62*W/H/1.6));
-  else art(x, W, H, t.art, p.area==='cancer' ? '214,82,46' : '112,72,214');
+  else art(x, W, H, t.art, p.area==='cancer' ? '214,82,46' : p.area==='other' ? '11,122,94' : '112,72,214');
 }
 $$('canvas[data-art]').forEach(cv => { const x = cv.getContext('2d'); const k = cv.dataset.art; const col = {cancer:'214,82,46', virus:'112,72,214', leaf:'11,122,94'}[k]; art(x, cv.width, cv.height, k, col); });
 
@@ -1034,7 +1059,7 @@ function card(p){ const a = AREA[p.area];
   return `<button class="ccard" data-open="${p.id}"><div class="thumb"><canvas data-thumb="${p.id}"></canvas><span class="pub">${SHORT[p.pub]||p.pub}</span></div>
     <h3>${esc(p.title)}</h3><div class="who">${esc(p.authors)}</div><div class="jr">${esc(p.journal)}</div>
     <div class="key">${KEY[p.id]}</div><div class="meta">${p.year===2026?'<span class="badge">New</span>':''}<span class="badge ${a.b}">${esc(p.tag)}</span><span class="badge t">${p.year}</span></div></button>`; }
-function paintAll(){ $$('canvas[data-thumb]').forEach(cv => paintThumb(cv, PUBS.find(p => p.id === cv.dataset.thumb))); }
+function paintAll(){ $$('canvas[data-thumb]').forEach(cv => paintThumb(cv, ALLPUBS.find(p => p.id === cv.dataset.thumb))); }
 $('#pubTabs').innerHTML = TABS.map(([k,l],i) => `<button class="tab" role="tab" aria-selected="${i===0}" data-k="${k}">${l}</button>`).join('');
 function showTab(k){
   $$('#pubTabs .tab').forEach(t => t.setAttribute('aria-selected', t.dataset.k === k));
@@ -1094,21 +1119,26 @@ $('#rlist').addEventListener('keydown', e => { const r = e.target.closest('.rrow
 
 /* ---------- reader window ---------- */
 const reader = $('#reader'); let cur = 0, lastFocus = null;
-function openPub(id){ cur = PUBS.findIndex(p => p.id === id); if(cur < 0) return; lastFocus = document.activeElement; fill(); reader.hidden = false; document.body.style.overflow = 'hidden'; $('#reader .x').focus(); }
-function fill(){ const p = PUBS[cur], a = AREA[p.area];
-  $('#r-addr').textContent = 'doi.org/' + p.doi;
+function openPub(id){ cur = ALLPUBS.findIndex(p => p.id === id); if(cur < 0) return; lastFocus = document.activeElement; fill(); reader.hidden = false; document.body.style.overflow = 'hidden'; $('#reader .x').focus(); }
+function fill(){ const p = ALLPUBS[cur], a = AREA[p.area];
+  $('#r-addr').textContent = p.doi ? 'doi.org/' + p.doi : p.url.replace(/^https?:\/\//,'');
   const abs = esc(p.abs).split('\n').map(l => l.replace(/^(Background|Methods|Results|Conclusion):\s*/, '<strong>$1</strong>')).join(' ');
   $('#r-body').innerHTML = `<div class="meta"><span class="badge ${a.b}">${esc(p.tag)}</span>${p.year===2026?'<span class="badge">New</span>':''}<span class="yr">${p.year} · ${esc(p.pub)}</span></div><h2 id="r-title">${esc(p.title)}</h2><div class="j">${esc(p.journal)}, ${p.vol}</div><div class="au">${esc(p.authors)}</div><div class="ab-l">Abstract</div><p class="ab">${abs}</p>`;
-  $('#r-body').scrollTop = 0; $('#r-doi').href = 'https://doi.org/' + p.doi; $('#r-cite').textContent = 'Copy citation'; }
+  $('#r-body').scrollTop = 0; $('#r-doi').href = p.doi ? 'https://doi.org/' + p.doi : p.url; $('#r-cite').textContent = 'Copy citation'; }
 function closePub(){ reader.hidden = true; document.body.style.overflow = ''; if(lastFocus) lastFocus.focus(); }
 document.addEventListener('click', e => { const o = e.target.closest('[data-open]'); if(o){ e.preventDefault(); openPub(o.dataset.open); } if(e.target.closest('[data-close]')) closePub(); });
-$('#r-prev').onclick = () => { cur = (cur - 1 + PUBS.length) % PUBS.length; fill(); };
-$('#r-next').onclick = () => { cur = (cur + 1) % PUBS.length; fill(); };
+$('#r-prev').onclick = () => { cur = (cur - 1 + ALLPUBS.length) % ALLPUBS.length; fill(); };
+$('#r-next').onclick = () => { cur = (cur + 1) % ALLPUBS.length; fill(); };
 document.addEventListener('keydown', e => { if(reader.hidden) return; if(e.key==='Escape') closePub(); if(e.key==='ArrowRight') $('#r-next').click(); if(e.key==='ArrowLeft') $('#r-prev').click();
   if(e.key==='Tab'){ const f = [...reader.querySelectorAll('button,a[href]')].filter(el => el.offsetParent); const first=f[0], last=f[f.length-1]; if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); } else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); } } });
 function copy(text, btn, ok){ try { navigator.clipboard.writeText(text).then(() => { const t = btn.textContent; btn.textContent = ok; setTimeout(() => btn.textContent = t, 1600); }, () => btn.textContent = 'Select and copy manually'); } catch(_) { btn.textContent = 'Select and copy manually'; } }
-$('#r-cite').onclick = e => { const p = PUBS[cur]; copy(`${p.authors}. ${p.title}. ${p.journal}. ${p.vol}. https://doi.org/${p.doi}`, e.currentTarget, 'Citation copied'); };
+$('#r-cite').onclick = e => { const p = ALLPUBS[cur]; copy(`${p.authors}. ${p.title}. ${p.journal}. ${p.vol}. ${p.doi ? 'https://doi.org/' + p.doi : p.url}`, e.currentTarget, 'Citation copied'); };
 $('#copyEmail').onclick = e => copy('bioinventics@gmail.com', e.currentTarget, 'Copied');
+
+
+/* ---------- founder's full publication list ---------- */
+$('#fpubs').innerHTML = ALLPUBS.map(p => { const a = AREA[p.area]; return `<li class="rrow" data-open="${p.id}" tabindex="0" role="button" aria-label="Read abstract: ${esc(p.title)}"><div class="thumb"><canvas data-thumb="${p.id}"></canvas><span class="pub">${SHORT[p.pub]||p.pub}</span></div><div><h2>${esc(p.title)}</h2><p class="snip">${esc(p.abs.replace(/\n/g,' '))}</p><div class="who">${esc(p.authors)}</div><div class="jr">${esc(p.journal)}, ${p.vol}</div><div class="meta">${p.founder?'':'<span class="badge">Bioinventics</span>'}<span class="badge ${a.b}">${esc(p.tag)}</span><span class="badge t">${KEY[p.id]}</span></div></div><div class="yr">${p.year}</div></li>`; }).join('');
+$('#fpubs').addEventListener('keydown', e => { const r = e.target.closest('.rrow'); if(r && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); openPub(r.dataset.open); } });
 
 /* ---------- inquiry ---------- */
 $('#inq').addEventListener('submit', e => { e.preventDefault(); const out = $('#q-out'); const name = $('#q-name').value.trim(), mail = $('#q-mail').value.trim();
@@ -1139,7 +1169,7 @@ TEAM.forEach((m,i) => m.name && addPhoto($('#tm'+i), m.photo, m.name));
 
 /* ---------- router: separate pages ---------- */
 const PAGES = ['home','about','services','research','publications','team','founder','contact'];
-const ALIAS = {top:'home', lab:'research', workflow:'services', featured:'home'};
+const ALIAS = {top:'home', lab:'research', workflow:'services', featured:'home', 'founder-pubs':'founder'};
 function route(){
   let h = location.hash.slice(1) || 'home'; const anchor = ALIAS[h] ? h : null; if(ALIAS[h]) h = ALIAS[h];
   if(!PAGES.includes(h)) h = 'home';
