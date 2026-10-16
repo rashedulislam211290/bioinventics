@@ -3,29 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="logo.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Bioinventics</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Bioinventics – Advanced Biological Invention Centre. In silico drug discovery: network pharmacology, molecular docking, molecular dynamics, DFT and ADMET.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a multi-page research-centre site (separate pages in the top menu, hero with badge + stat counters,
    checklist about block, feature-card grids, step blocks, founder card, contact channels, rich footer).
    Palette: deep emerald + gold from the Bioinventics logo, on a soft mint-white page. Single committed light theme. */
 :root{
   color-scheme:light;
-  --bg:#F7FAF8; --white:#FFFFFF; --soft:#EEF5F1; --soft-2:#E3EEE8;
-  --ink:#0C2A24; --text:#2F4540; --dim:#5E716B; --faint:#8A9A94; --line:#D6E3DD; --line-2:#E6EEEA;
-  --em:#0B6E5B; --em-d:#06433A; --em-x:#032822; --mint:#3DDC97; --mint-soft:#DDF6EA;
+  --bg:#F6F8FB; --white:#FFFFFF; --soft:#EEF3F9; --soft-2:#E2EAF4;
+  --ink:#0E2238; --text:#33415A; --dim:#5B6B7C; --faint:#8A97A6; --line:#D8E0EA; --line-2:#E7ECF3;
+  --em:#123A63; --em-d:#0E2D4F; --em-x:#0A1D33; --mint:#6FD06A; --mint-soft:#E4EDF8;
   --gold:#E2A91B; --gold-l:#F7CF5E; --gold-bg:#FFF3D3; --gold-ink:#7E5900;
   --green:#2E9E6B; --green-bg:#DEF3E8; --teal:#0E7C86; --teal-bg:#DDF1F2; --cyan:#0E7C86;
   --red:#D6522E; --red-bg:#FCE6DE; --purple:#7048D6; --lav:#ECE6FB; --leaf:#2E9E6B;
   --sans:"Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-  --r:16px; --shadow:0 1px 2px rgba(12,42,36,.06),0 8px 24px -10px rgba(12,42,36,.18);
-  --shadow-lg:0 2px 6px rgba(12,42,36,.06),0 24px 48px -16px rgba(12,42,36,.28);
+  --r:16px; --shadow:0 1px 2px rgba(14,34,56,.06),0 8px 24px -10px rgba(14,34,56,.18);
+  --shadow-lg:0 2px 6px rgba(14,34,56,.06),0 24px 48px -16px rgba(14,34,56,.28);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
@@ -68,13 +69,25 @@ section[id]{scroll-margin-top:90px}
 .badge.t{background:var(--teal-bg);color:var(--teal)}
 .link{color:var(--em);font-weight:700;background:none;border:0;font:inherit;font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:4px;padding:0}
 
+
+/* ===== Bioinventics logo ===== */
+.wm{font-family:"Lexend",var(--sans);font-weight:600;letter-spacing:-.035em;line-height:1;display:inline-flex;align-items:baseline;color:var(--ink);white-space:nowrap}
+.wm .di{position:relative}
+.wm .tb{position:absolute;left:50%;top:.03em;width:.26em;height:.26em;margin-left:-.13em;overflow:visible}
+.wm .oo{width:.89em;height:1.08em;margin:0 -.15em 0 .04em;flex:none}
+.brand .ic{width:46px;height:46px;flex:none;border-radius:11px}
+.brand .wm{font-size:26px}
+.fbrand .ic{width:64px;height:64px;flex:none}
+.fbrand .wm{font-size:30px;color:#fff}
+.logo-story .ic{width:110px;height:110px;flex:none}
+
 /* ===== header ===== */
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
 .hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2)}
 .hdr .row{display:flex;align-items:center;gap:20px;height:76px}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto;min-width:0}
-.brand img{width:46px;height:46px;border-radius:10px;border:1px solid var(--line);flex:none;background:#fff}
-.brand b{display:block;font-weight:800;font-size:21px;color:var(--ink);letter-spacing:-.02em;line-height:1.05}
+
+.brand b{display:block}
 .brand small{display:block;font-size:11.5px;color:var(--dim);font-weight:600;white-space:nowrap}
 .hnav{display:flex;gap:2px}
 .hnav a{font-size:14.5px;font-weight:600;color:var(--text);text-decoration:none;padding:9px 12px;border-radius:999px;white-space:nowrap;transition:background .15s,color .15s}
@@ -82,7 +95,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hnav a.on{background:var(--mint-soft);color:var(--em)}
 .burger{display:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;align-items:center;justify-content:center;flex:none}
 .burger svg{width:22px;height:22px}
-.drawer{position:fixed;inset:0;z-index:70;background:rgba(3,40,34,.55)}
+.drawer{position:fixed;inset:0;z-index:70;background:rgba(10,29,51,.55)}
 .drawer[hidden]{display:none!important}
 .drawer .panel{position:absolute;right:0;top:0;bottom:0;width:min(330px,88vw);background:var(--white);padding:calc(env(safe-area-inset-top,0px) + 22px) max(22px,env(safe-area-inset-right,0px)) 22px 22px;overflow:auto}
 .drawer .panel a{display:block;padding:13px 6px;font-weight:700;font-size:17px;text-decoration:none;border-bottom:1px solid var(--line-2)}
@@ -91,7 +104,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* ===== hero ===== */
 .hero{position:relative;overflow:hidden;isolation:isolate;color:#fff;background:
-  radial-gradient(700px 420px at 85% 30%, rgba(61,220,151,.22), transparent 65%),
+  radial-gradient(700px 420px at 85% 30%, rgba(111,208,106,.22), transparent 65%),
   radial-gradient(600px 400px at 0% 100%, rgba(226,169,27,.20), transparent 65%),
   linear-gradient(135deg,var(--em-x) 0%,var(--em-d) 45%,var(--em) 100%)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.4px);background-size:26px 26px;mask-image:linear-gradient(180deg,#000,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%)}
@@ -123,7 +136,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .wave{display:block;width:100%;height:56px;margin-top:-1px}
 
 /* page heroes (inner pages) */
-.phero{position:relative;overflow:hidden;color:#fff;padding-block:64px 70px;background:radial-gradient(500px 300px at 90% 0%,rgba(61,220,151,.22),transparent 70%),linear-gradient(135deg,var(--em-x),var(--em-d) 50%,var(--em))}
+.phero{position:relative;overflow:hidden;color:#fff;padding-block:64px 70px;background:radial-gradient(500px 300px at 90% 0%,rgba(111,208,106,.22),transparent 70%),linear-gradient(135deg,var(--em-x),var(--em-d) 50%,var(--em))}
 .phero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.1) 1px,transparent 1.4px);background-size:24px 24px;mask-image:linear-gradient(90deg,transparent,#000);-webkit-mask-image:linear-gradient(90deg,transparent,#000)}
 .phero .wrap{position:relative}
 .crumbs{font-size:13.5px;color:rgba(255,255,255,.7);font-weight:600}
@@ -369,7 +382,7 @@ form.inq input:focus,form.inq textarea:focus{outline:none;border-color:var(--em)
 /* ===== reader window ===== */
 .reader{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .reader[hidden]{display:none!important}
-.reader .scrim{position:absolute;inset:0;background:rgba(3,40,34,.6);backdrop-filter:blur(4px);animation:fade .2s}
+.reader .scrim{position:absolute;inset:0;background:rgba(10,29,51,.6);backdrop-filter:blur(4px);animation:fade .2s}
 @keyframes fade{from{opacity:0}}
 .win{position:relative;width:min(900px,100%);max-height:100%;display:flex;flex-direction:column;border-radius:22px;background:var(--white);box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;animation:pop .25s cubic-bezier(.2,.9,.3,1.1)}
 @keyframes pop{from{transform:translateY(14px) scale(.98);opacity:0}}
@@ -505,7 +518,7 @@ footer{background:var(--em-x);color:#fff}
 <!-- ============ HEADER ============ -->
 <header class="hdr">
   <div class="wrap row">
-    <a class="brand" href="#home" aria-label="Bioinventics home"><img src="logo.png" alt=""><span style="min-width:0"><b>Bioinventics</b><small>In Silico Research &amp; Drug Discovery</small></span></a>
+    <a class="brand" href="#home" aria-label="Bioinventics home"><svg class="ic" viewBox="0 0 300 300" aria-hidden="true"><defs><linearGradient id="bvLeafh" x1="170" y1="45" x2="268" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2E8B3E"/><stop offset="0.55" stop-color="#4CB04F"/><stop offset="1" stop-color="#8BD86A"/></linearGradient><radialGradient id="bvTabh" cx="-4.5" cy="-5" r="18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient></defs><rect width="300" height="300" rx="68" fill="#123A63"/><g transform="translate(19.2 52.5) scale(0.82)"><path d="M130 87 L197.5 126 L197.5 204 L130 243 L62.5 204 L62.5 126 Z" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="round"/><g transform="translate(177.5 165) rotate(90)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><g transform="translate(106.25 206.15) rotate(30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><g transform="translate(106.25 123.95) rotate(-30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><path d="M130 87 C132 66 146 50 168 42" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/><path d="M168 42 C176 18 204 1 236 -4 C250 -6 262 -3 272 2 C268 15 259 30 245 42 C224 61 192 62 168 42 Z" fill="url(#bvLeafh)"/><path d="M170 41 C200 30 236 16 270 3" fill="none" stroke="#E6F7DA" stroke-width="3.5" stroke-linecap="round"/><g fill="none" stroke="#E6F7DA" stroke-width="1.8" stroke-linecap="round" opacity="0.85"><path d="M188 34 Q190 24 197 16"/><path d="M205 27 Q208 16 216 8"/><path d="M222 21 Q226 11 234 3"/><path d="M240 14 Q244 6 251 0"/><path d="M188 34 Q192 42 199 49"/><path d="M205 27 Q211 37 219 45"/><path d="M222 21 Q229 30 238 36"/><path d="M240 14 Q247 21 255 25"/></g><g transform="translate(197.5 204)"><circle r="13.5" fill="url(#bvTabh)"/><circle r="11" fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.45"/><g transform="rotate(-25)"><line x1="-8.5" y1="0" x2="8.5" y2="0" stroke="#7A5500" stroke-width="2" stroke-linecap="round"/></g></g></g></svg><span style="min-width:0;display:flex;flex-direction:column;gap:3px"><span class="wm" role="img" aria-label="bioinventics"><span>b</span><span class="di">ı<svg class="tb" viewBox="-12 -12 24 24" aria-hidden="true"><defs><radialGradient id="wgh" cx="-3.5" cy="-4" r="14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient></defs><circle r="10.5" fill="url(#wgh)"/><circle r="8.6" fill="none" stroke="#FFFFFF" stroke-width="0.9" opacity="0.45"/><line x1="-5.9" y1="2.7" x2="5.9" y2="-2.7" stroke="#7A5500" stroke-width="1.6" stroke-linecap="round"/></svg></span><svg class="oo" viewBox="-26 -56 70 82" aria-hidden="true"><defs><linearGradient id="wlh" x1="11" y1="-36" x2="43" y2="-54" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2E8B3E"/><stop offset="0.55" stop-color="#4CB04F"/><stop offset="1" stop-color="#8BD86A"/></linearGradient></defs><path d="M0 -21 L18.2 -10.5 L18.2 10.5 L0 21 L-18.2 10.5 L-18.2 -10.5 Z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><g stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><line x1="11.7" y1="-6.7" x2="11.7" y2="6.7"/><line x1="-0.03" y1="13.48" x2="-11.67" y2="6.76"/><line x1="-11.67" y1="-6.76" x2="-0.03" y2="-13.48"/></g><path d="M0 -21 C1 -29 5 -34 11 -37" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M11 -37 C14 -46 23 -52 33 -54 C37 -55 41 -54 44 -52 C43 -47 40 -42 35 -38 C28 -32 18 -32 11 -37 Z" fill="url(#wlh)"/><path d="M12 -37 C21 -41 32 -46 43 -52" fill="none" stroke="#E6F7DA" stroke-width="1.4" stroke-linecap="round"/></svg><span class="di">ı<svg class="tb" viewBox="-12 -12 24 24" aria-hidden="true"><defs><radialGradient id="wph" cx="-3.5" cy="-4" r="14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#EBDDFB"/><stop offset="0.35" stop-color="#6B2FA0"/><stop offset="1" stop-color="#3A1263"/></radialGradient></defs><circle r="10.5" fill="url(#wph)"/><circle r="8.6" fill="none" stroke="#FFFFFF" stroke-width="0.9" opacity="0.45"/><line x1="-5.9" y1="2.7" x2="5.9" y2="-2.7" stroke="#2E0E50" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>nvent</span><span class="di">ı<svg class="tb" viewBox="-12 -12 24 24" aria-hidden="true"><defs><radialGradient id="wgh2" cx="-3.5" cy="-4" r="14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient></defs><circle r="10.5" fill="url(#wgh2)"/><circle r="8.6" fill="none" stroke="#FFFFFF" stroke-width="0.9" opacity="0.45"/><line x1="-5.9" y1="2.7" x2="5.9" y2="-2.7" stroke="#7A5500" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>cs</span></span><small>In Silico Research &amp; Drug Discovery</small></span></a>
     <nav class="hnav" aria-label="Main">
       <a href="#home" data-p="home">Home</a><a href="#about" data-p="about">About</a><a href="#services" data-p="services">Services</a><a href="#research" data-p="research">Research</a><a href="#publications" data-p="publications">Publications</a><a href="#team" data-p="team">Team</a><a href="#founder" data-p="founder">Founder</a><a href="#contact" data-p="contact">Contact</a>
     </nav>
@@ -547,7 +560,7 @@ footer{background:var(--em-x);color:#fff}
         <div class="gchip c3"><span>HOMO–LUMO gap</span><b>5.72 eV</b></div>
       </div>
     </div>
-    <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 56V28C240 0 480 0 720 22s480 30 720 0v34z" fill="#F7FAF8"/></svg>
+    <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 56V28C240 0 480 0 720 22s480 30 720 0v34z" fill="#F6F8FB"/></svg>
   </section>
 
   <section class="sec" style="padding-top:48px">
@@ -619,7 +632,7 @@ footer{background:var(--em-x);color:#fff}
         <div><b>Why nature</b><p>Natural products are secondary metabolites of plants, fungi, bacteria and other organisms, and remain one of the richest sources of medicines. Vinblastine, a cancer drug from the Madagascar periwinkle <i>Catharanthus roseus</i>, is a famous example.</p></div>
         <div><b>Why computers</b><p>Extracting and testing every natural compound in the lab is slow and costly. Computer-aided drug design with docking and molecular dynamics screens candidates much faster and sends only the best ones to the bench.</p></div>
       </div>
-      <div class="logo-story"><img src="logo.png" alt="Bioinventics Centre logo"><p><b style="color:var(--ink)">Our mark.</b> The laptop and atom stand for computation, the mortar and leaves for natural products, and the DNA for genomics. Together they make one lab, summed up in our motto: <i>Computer is your lab, now execute experiments.</i></p></div>
+      <div class="logo-story"><svg class="ic" viewBox="0 0 300 300" aria-hidden="true"><defs><linearGradient id="bvLeafa" x1="170" y1="45" x2="268" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2E8B3E"/><stop offset="0.55" stop-color="#4CB04F"/><stop offset="1" stop-color="#8BD86A"/></linearGradient><radialGradient id="bvTaba" cx="-4.5" cy="-5" r="18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient></defs><rect width="300" height="300" rx="68" fill="#123A63"/><g transform="translate(19.2 52.5) scale(0.82)"><path d="M130 87 L197.5 126 L197.5 204 L130 243 L62.5 204 L62.5 126 Z" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="round"/><g transform="translate(177.5 165) rotate(90)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><g transform="translate(106.25 206.15) rotate(30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><g transform="translate(106.25 123.95) rotate(-30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><path d="M130 87 C132 66 146 50 168 42" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/><path d="M168 42 C176 18 204 1 236 -4 C250 -6 262 -3 272 2 C268 15 259 30 245 42 C224 61 192 62 168 42 Z" fill="url(#bvLeafa)"/><path d="M170 41 C200 30 236 16 270 3" fill="none" stroke="#E6F7DA" stroke-width="3.5" stroke-linecap="round"/><g fill="none" stroke="#E6F7DA" stroke-width="1.8" stroke-linecap="round" opacity="0.85"><path d="M188 34 Q190 24 197 16"/><path d="M205 27 Q208 16 216 8"/><path d="M222 21 Q226 11 234 3"/><path d="M240 14 Q244 6 251 0"/><path d="M188 34 Q192 42 199 49"/><path d="M205 27 Q211 37 219 45"/><path d="M222 21 Q229 30 238 36"/><path d="M240 14 Q247 21 255 25"/></g><g transform="translate(197.5 204)"><circle r="13.5" fill="url(#bvTaba)"/><circle r="11" fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.45"/><g transform="rotate(-25)"><line x1="-8.5" y1="0" x2="8.5" y2="0" stroke="#7A5500" stroke-width="2" stroke-linecap="round"/></g></g></g></svg><p><b style="color:var(--ink)">Our mark.</b> A benzene ring stands for chemistry, the capsules and tablets for medicine, and the growing leaf for natural products. Together they show what we do, summed up in our motto: <i>Computer is your lab, now execute experiments.</i></p></div>
     </div>
   </section>
   <section class="sec alt">
@@ -864,7 +877,7 @@ footer{background:var(--em-x);color:#fff}
 <footer>
   <div class="wrap fnews"><div><h3>Have a research idea?</h3><p>Tell us about your target or compound and we will plan the study together.</p></div><a class="btn gold" href="#contact">Contact Us</a></div>
   <div class="wrap fgrid">
-    <div class="fbrand"><img src="logo.png" alt="Bioinventics logo"><div><b>Bioinventics</b><p>Advanced Biological Invention Centre. In silico drug discovery for cancer and infectious disease.</p></div></div>
+    <div class="fbrand"><svg class="ic" viewBox="0 0 300 300" aria-hidden="true"><defs><linearGradient id="bvLeaff" x1="170" y1="45" x2="268" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2E8B3E"/><stop offset="0.55" stop-color="#4CB04F"/><stop offset="1" stop-color="#8BD86A"/></linearGradient><radialGradient id="bvTabf" cx="-4.5" cy="-5" r="18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient></defs><rect width="300" height="300" rx="68" fill="#123A63"/><g transform="translate(19.2 52.5) scale(0.82)"><path d="M130 87 L197.5 126 L197.5 204 L130 243 L62.5 204 L62.5 126 Z" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="round"/><g transform="translate(177.5 165) rotate(90)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><g transform="translate(106.25 206.15) rotate(30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><g transform="translate(106.25 123.95) rotate(-30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g><path d="M130 87 C132 66 146 50 168 42" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/><path d="M168 42 C176 18 204 1 236 -4 C250 -6 262 -3 272 2 C268 15 259 30 245 42 C224 61 192 62 168 42 Z" fill="url(#bvLeaff)"/><path d="M170 41 C200 30 236 16 270 3" fill="none" stroke="#E6F7DA" stroke-width="3.5" stroke-linecap="round"/><g fill="none" stroke="#E6F7DA" stroke-width="1.8" stroke-linecap="round" opacity="0.85"><path d="M188 34 Q190 24 197 16"/><path d="M205 27 Q208 16 216 8"/><path d="M222 21 Q226 11 234 3"/><path d="M240 14 Q244 6 251 0"/><path d="M188 34 Q192 42 199 49"/><path d="M205 27 Q211 37 219 45"/><path d="M222 21 Q229 30 238 36"/><path d="M240 14 Q247 21 255 25"/></g><g transform="translate(197.5 204)"><circle r="13.5" fill="url(#bvTabf)"/><circle r="11" fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.45"/><g transform="rotate(-25)"><line x1="-8.5" y1="0" x2="8.5" y2="0" stroke="#7A5500" stroke-width="2" stroke-linecap="round"/></g></g></g></svg><div><span class="wm" role="img" aria-label="bioinventics"><span>b</span><span class="di">ı<svg class="tb" viewBox="-12 -12 24 24" aria-hidden="true"><defs><radialGradient id="wgf" cx="-3.5" cy="-4" r="14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient></defs><circle r="10.5" fill="url(#wgf)"/><circle r="8.6" fill="none" stroke="#FFFFFF" stroke-width="0.9" opacity="0.45"/><line x1="-5.9" y1="2.7" x2="5.9" y2="-2.7" stroke="#7A5500" stroke-width="1.6" stroke-linecap="round"/></svg></span><svg class="oo" viewBox="-26 -56 70 82" aria-hidden="true"><defs><linearGradient id="wlf" x1="11" y1="-36" x2="43" y2="-54" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2E8B3E"/><stop offset="0.55" stop-color="#4CB04F"/><stop offset="1" stop-color="#8BD86A"/></linearGradient></defs><path d="M0 -21 L18.2 -10.5 L18.2 10.5 L0 21 L-18.2 10.5 L-18.2 -10.5 Z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><g stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><line x1="11.7" y1="-6.7" x2="11.7" y2="6.7"/><line x1="-0.03" y1="13.48" x2="-11.67" y2="6.76"/><line x1="-11.67" y1="-6.76" x2="-0.03" y2="-13.48"/></g><path d="M0 -21 C1 -29 5 -34 11 -37" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M11 -37 C14 -46 23 -52 33 -54 C37 -55 41 -54 44 -52 C43 -47 40 -42 35 -38 C28 -32 18 -32 11 -37 Z" fill="url(#wlf)"/><path d="M12 -37 C21 -41 32 -46 43 -52" fill="none" stroke="#E6F7DA" stroke-width="1.4" stroke-linecap="round"/></svg><span class="di">ı<svg class="tb" viewBox="-12 -12 24 24" aria-hidden="true"><defs><radialGradient id="wpf" cx="-3.5" cy="-4" r="14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#EBDDFB"/><stop offset="0.35" stop-color="#A77BE0"/><stop offset="1" stop-color="#4A2380"/></radialGradient></defs><circle r="10.5" fill="url(#wpf)"/><circle r="8.6" fill="none" stroke="#FFFFFF" stroke-width="0.9" opacity="0.45"/><line x1="-5.9" y1="2.7" x2="5.9" y2="-2.7" stroke="#2E0E50" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>nvent</span><span class="di">ı<svg class="tb" viewBox="-12 -12 24 24" aria-hidden="true"><defs><radialGradient id="wgf2" cx="-3.5" cy="-4" r="14" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient></defs><circle r="10.5" fill="url(#wgf2)"/><circle r="8.6" fill="none" stroke="#FFFFFF" stroke-width="0.9" opacity="0.45"/><line x1="-5.9" y1="2.7" x2="5.9" y2="-2.7" stroke="#7A5500" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>cs</span></span><p>Advanced Biological Invention Centre. In silico drug discovery for cancer and infectious disease.</p></div></div>
     <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#team">Team</a></li><li><a href="#founder">Founder &amp; CEO</a></li><li><a href="#contact">Contact</a></li></ul></div>
     <div><h4>Research</h4><ul><li><a href="#services">Services</a></li><li><a href="#workflow">Workflow</a></li><li><a href="#lab">Molecule Lab</a></li><li><a href="#publications">Publications</a></li></ul></div>
     <div><h4>Contact Info</h4><ul><li><a href="#contact">bioinventics@gmail.com</a></li><li><a href="#contact">rashed.pharm.jnu@gmail.com</a></li><li><a href="https://scholar.google.com/citations?user=xlEA5NYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a></li><li><a href="https://orcid.org/0000-0002-8248-0188" target="_blank" rel="noopener">ORCID ↗</a></li><li><a href="#contact">Rajshahi 6204, Bangladesh</a></li></ul></div>
@@ -1155,7 +1168,7 @@ function addPhoto(el, src, alt){ if(!src || !el) return; const img = new Image()
 $$('[data-photo]').forEach(el => addPhoto(el, FOUNDER_PHOTO, 'Md Rashedul Islam, Founder and CEO of Bioinventics'));
 /* To add a member: fill in name, and optionally photo (an image URL) and bio. Leave name empty to show an open position. */
 const TEAM = [
- {name:"Md Rashedul Islam", role:"Founder & CEO", photo:FOUNDER_PHOTO, bio:"Leads research strategy, drug-design projects and collaborations.", c:"#0B6E5B"},
+ {name:"Md Rashedul Islam", role:"Founder & CEO", photo:FOUNDER_PHOTO, bio:"Leads research strategy, drug-design projects and collaborations.", c:"#123A63"},
  {name:"", role:"Senior Researcher", bio:"Designs and supervises docking, dynamics and DFT studies.", c:"#2E9E6B"},
  {name:"", role:"Researcher & Web Developer", bio:"Runs simulations and maintains the Bioinventics website and tools.", c:"#0E7C86"},
  {name:"", role:"Advisor & Trainer", bio:"Guides projects and trains students in computational drug discovery.", c:"#C99212"},
