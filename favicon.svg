@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="Bioinventics icon">
+  <defs>
+    <linearGradient id="bvLeaf" x1="170" y1="45" x2="268" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2E8B3E"/><stop offset="0.55" stop-color="#4CB04F"/><stop offset="1" stop-color="#8BD86A"/></linearGradient>
+    <radialGradient id="bvTab" cx="-4.5" cy="-5" r="18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#E2A91B"/><stop offset="1" stop-color="#8F6400"/></radialGradient>
+  </defs>
+  <rect width="300" height="300" rx="68" fill="#123A63"/>
+  <g transform="translate(19.2 52.5) scale(0.82)">
+    <path d="M130 87 L197.5 126 L197.5 204 L130 243 L62.5 204 L62.5 126 Z" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linejoin="round"/>
+    <g transform="translate(177.5 165) rotate(90)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g>
+    <g transform="translate(106.25 206.15) rotate(30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g>
+    <g transform="translate(106.25 123.95) rotate(-30)"><rect x="-25" y="-7.5" width="50" height="15" rx="7.5" fill="#E2A91B"/><path d="M0 -7.5 H-17.5 A7.5 7.5 0 0 0 -17.5 7.5 H0 Z" fill="#FFFFFF"/></g>
+    <path d="M130 87 C132 66 146 50 168 42" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+    <path d="M168 42 C176 18 204 1 236 -4 C250 -6 262 -3 272 2 C268 15 259 30 245 42 C224 61 192 62 168 42 Z" fill="url(#bvLeaf)"/>
+    <path d="M170 41 C200 30 236 16 270 3" fill="none" stroke="#E6F7DA" stroke-width="3.5" stroke-linecap="round"/>
+    <g fill="none" stroke="#E6F7DA" stroke-width="1.8" stroke-linecap="round" opacity="0.85"><path d="M188 34 Q190 24 197 16"/><path d="M205 27 Q208 16 216 8"/><path d="M222 21 Q226 11 234 3"/><path d="M240 14 Q244 6 251 0"/><path d="M188 34 Q192 42 199 49"/><path d="M205 27 Q211 37 219 45"/><path d="M222 21 Q229 30 238 36"/><path d="M240 14 Q247 21 255 25"/></g>
+    <g transform="translate(197.5 204)"><circle r="13.5" fill="url(#bvTab)"/><circle r="11" fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.45"/><g transform="rotate(-25)"><line x1="-8.5" y1="0" x2="8.5" y2="0" stroke="#7A5500" stroke-width="2" stroke-linecap="round"/></g></g>
+  </g>
+</svg>
